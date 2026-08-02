@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+
+}
+.logo{
+    width: 180px;
+    height: 40px;
+    margin-left: 20px;
+}
+.gornjiDeoMeni{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+.gornjiDeoDiv{
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.9);
+    height: 50px;
+
+}
+.gornjiDeoButton{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+ 
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    height: 100%;
+    width: 150px;
+}
+.gornjiDeoButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+
+}
