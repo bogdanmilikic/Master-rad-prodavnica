@@ -16,17 +16,17 @@ const PopUp=({handleClose,prviBroj,drugiBroj,setPosalji})=>{
 setRacunaj(e.target.value);
     }
 const handleProvera=()=>{
-    if(racunaj!=zbir){
-        setAlert(true);
-        setUspesniAlert(false);
-setPoruka("Uneti broj nije jedank zbiru prvog i drugog broja");
-setPosalji(true);
-    }
-    else{
-        setPoruka("Uneti broj je tacan");
+    if(racunaj===zbir){
+      setPoruka("Uneti broj je tacan");
         setUspesniAlert(true);
         setPosalji(false);
         setAlert(true);
+    }
+    else{
+          setAlert(true);
+        setUspesniAlert(false);
+setPoruka("Uneti broj nije jedank zbiru prvog i drugog broja");
+setPosalji(true);
         
     }
 }
