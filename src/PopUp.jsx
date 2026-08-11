@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  useState } from "react";
 import Alert from "./Alert";
 
-const PopUp=({handleClose,prviBroj,drugiBroj,setPosalji})=>{
+const PopUp=({handleClose,prviBroj,drugiBroj,setPosalji,setPrviBroj,setDrugiBroj})=>{
    
-    const zbir=prviBroj+drugiBroj;
     const [poruka,setPoruka]=useState("");
     const [racunaj,setRacunaj]=useState();
     const [alert,setAlert]=useState(false);
@@ -15,19 +14,23 @@ const PopUp=({handleClose,prviBroj,drugiBroj,setPosalji})=>{
     const handleRacunaj=(e)=>{
 setRacunaj(e.target.value);
     }
+
 const handleProvera=()=>{
-    if(racunaj===zbir){
-      setPoruka("Uneti broj je tacan");
+    if(racunaj===(prviBroj+drugiBroj).toString()){
+       setPoruka("Uneti broj je tacan");
         setUspesniAlert(true);
         setPosalji(false);
         setAlert(true);
     }
     else{
-          setAlert(true);
+        setPoruka("Uneti broj nije jedank zbiru prvog i drugog broja");
+         setAlert(true);
         setUspesniAlert(false);
-setPoruka("Uneti broj nije jedank zbiru prvog i drugog broja");
+        setPrviBroj(Math.floor(Math.random() * 100));
+        setDrugiBroj(Math.floor(Math.random() * 100));
+
 setPosalji(true);
-        
+       
     }
 }
 return(
