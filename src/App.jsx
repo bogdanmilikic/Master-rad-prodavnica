@@ -75,7 +75,7 @@ const GlavnaStrana=()=> {
       }
      
     }
-  }, [oNamaScroll, kontaktScroll, trenutniScroll]);
+  }, [scroll,oNamaScroll, kontaktScroll, trenutniScroll]);
 
 
   

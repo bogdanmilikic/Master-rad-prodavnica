@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const GornjiDeo=({aktivno,setAktivno,kontaktScroll,oNamaScroll,setTrenutnaPozicija,setScroll,prviId,drugiId,handleProdavnica,handleSlika,vidjliviDugmici,aktivnoDugme})=>{
 
    const handleInfo = () => {
