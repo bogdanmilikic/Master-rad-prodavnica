@@ -9,7 +9,8 @@ hr{
 .logo{
     width: 180px;
     height: 40px;
-    margin-left: 20px;
+    margin-left: 10px;
+    cursor: pointer;
 }
 .gornjiDeoMeni{
     display: flex;
@@ -18,11 +19,14 @@ hr{
     height: 100%;
 }
 .gornjiDeoDiv{
+    position: fixed;
+    top: 0;
     display: flex;
     align-items: center;
     background-color: rgb(0, 0, 0, 0.9);
     height: 50px;
-
+    width: 100%;
+z-index: 2;
 }
 .gornjiDeoButton{
     background-color: transparent;
@@ -39,6 +43,18 @@ hr{
 .gornjiDeoButton:hover {
     background-color: rgba(255, 255, 255, 0.2);
 
+}
+.gornjiDeoButtonAktivno{
+     background-color: rgba(255, 255, 255, 0.2);
+ border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+ 
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    height: 100%;
+    width: 150px;
 }
 .tekstDiv{
     width: 80%;
@@ -96,6 +112,15 @@ iframe{
     border:2px solid#43607f;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+.mainDiv{
+    margin-top:70px;
+}
+.kontaktDiv{
+    scroll-margin-top: 50px;
+}
+.oNamaDiv{
+    scroll-margin-top: 70px;
+}
 .formaDiv{
     width: 100%;
 }
@@ -151,6 +176,7 @@ background-color: rgb(255, 255, 255,0.2);
 border-radius: 10px;
 justify-content: center;
     text-align: center;
+    z-index: 1;
 }
 .kontaktPoljeDiv{
     justify-content: center;
@@ -163,6 +189,7 @@ justify-content: center;
     transform: translateY(-5px);
     transition: all 0.3s ease;
     background-color: rgb(255, 255, 255,0.6);
+    z-index: 1;
 }
 .kontaktPoljeIkonica{
     font-size: 24px;
@@ -287,4 +314,37 @@ width: 10%;
   color: white;
   font-size: 20px;
   margin-left: 20px;
+}
+.donjiDeoDiv{
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    place-items: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0, 0.9);
+    padding: 5px;
+}
+.donjiDeoLogo{
+width: 180px;
+    height: 40px;
+   
+}
+.donjiDeoDugmeDiv{
+    position: inherit;
+
+}
+.donjiDeoDugme{
+margin-right: 10px;
+font-size: 20px;
+padding: 2px;
+border-radius: 100px;
+border: none;
+}
+.donjiDeoDugme:hover{
+       transform: translateY(-2px);
+}
+a{
+    text-decoration: none;
+    color: inherit;
 }
