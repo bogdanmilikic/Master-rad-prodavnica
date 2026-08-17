@@ -1,6 +1,5 @@
 import GornjiDeo from './GornjiDeo';
 
-
 import './stilovi.css';
 
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +14,7 @@ function ProdavnicaMain() {
         <header>    <GornjiDeo handleSlika={handleHome}/>
     </header>
 <main>
-komentar za brisanje
+
 </main>
 
     </div>
