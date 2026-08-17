@@ -19,7 +19,7 @@ function ProdavnicaMain() {
         <header>    <GornjiDeo handleSlika={handleHome}/>
     </header>
 <main>
-
+komentar za brisanje
 </main>
 
     </div>
