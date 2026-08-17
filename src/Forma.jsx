@@ -18,8 +18,8 @@ const [pitanje,setPitanje]=useState("");
   const [obavestenje, setObavestenje] = useState(false);
   const [uspesno, setUspesno] = useState(false);
 
- const prviBroj=Math.floor(Math.random() * 100);
-    const drugiBroj=Math.floor(Math.random() * 100);
+ const [prviBroj,setPrviBroj]=useState(Math.floor(Math.random() * 100));
+ const [drugiBroj,setDrugiBroj]=useState(Math.floor(Math.random() * 100));
  const handleOpenProvera=()=>{
     setOpenPopUp(true);
  }
@@ -28,15 +28,7 @@ const [pitanje,setPitanje]=useState("");
  }
   const handlePitanje = (e) => {
     e.preventDefault();
-
-    if (eMail.trim() === "" || eMailRef.current.checkValidity() === false) {
-      setPoruka(
-      "Uneti validnu e-mail adresu" );
-      setUspesno(false);
-      setObavestenje(true);
-      return;
-    }
-    if (ime.trim() === "" || ime.trim() === undefined) {
+ if (ime.trim() === "" || ime.trim() === undefined) {
       setPoruka(
         "'Ime i prezime' polje mora biti popunjeno da bi se poslalo Vaše pitanje"
       );
@@ -44,6 +36,14 @@ const [pitanje,setPitanje]=useState("");
       setObavestenje(true);
       return;
     }
+    if (eMail.trim() === "" || eMailRef.current.checkValidity() === false) {
+      setPoruka(
+      "Uneti validnu e-mail adresu" );
+      setUspesno(false);
+      setObavestenje(true);
+      return;
+    }
+   
     if (pitanje.trim() === "" || pitanje.trim() === undefined) {
       setPoruka("'Pitanje' polje mora biti popunjeno da bi se poslalo Vaše pitanje"
       );
@@ -95,7 +95,7 @@ const [pitanje,setPitanje]=useState("");
           poruka={poruka}
         />
       ) : undefined}
-        {openPopUp?<PopUp prviBroj={prviBroj} drugiBroj={drugiBroj} handleClose={handleClose} setPosalji={setPosalji}/>:null}
+        {openPopUp?<PopUp prviBroj={prviBroj} drugiBroj={drugiBroj} setDrugiBroj={setDrugiBroj} setPrviBroj={setPrviBroj} handleClose={handleClose} setPosalji={setPosalji}/>:null}
         <div className="formaDiv">
             
             <input className="formaInput" placeholder="Unesite vaše ime i prezime" value={ime} onChange={(e)=>{setIme(e.target.value)}} required/>
