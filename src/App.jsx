@@ -11,7 +11,6 @@ import {  Route, Routes, useNavigate } from 'react-router-dom';
 import ProdavnicaMain from './ProdavnicaMain';
 import { useEffect, useState } from 'react';
 
-
 const GlavnaStrana=()=> {
   const navigate=useNavigate();
   const [trenutniScroll, setTrenutniScroll] = useState(0);
@@ -80,7 +79,7 @@ const GlavnaStrana=()=> {
 
   
   return (
-    <body onScroll={(e) => setTrenutniScroll(e.currentTarget.scrollTop)}>
+    <div onScroll={(e) => setTrenutniScroll(e.currentTarget.scrollTop)}>
       <header>
         <GornjiDeo aktivno={aktivnoDugme} setAktivno={setAktivnoDugme} handleProdavnica={handleProdavnica}vidjliviDugmici={true} handleSlika={()=>navigate("/")} kontaktScroll={kontaktScroll} aktivnoDugme={aktivnoDugme} prviId={'oNama'} drugiId={'kontakt'} oNamaScroll={oNamaScroll} setScroll={setScroll} setTrenutnaPozicija={setTrenutniScroll} />
       </header>
@@ -100,7 +99,7 @@ Posetite nas i uverite se zašto nam veliki broj zadovoljnih kupaca ukazuje pove
      <footer>
       <DonjiDeo/>
      </footer>
-    </body>
+    </div>
     
   );
 }
