@@ -3,7 +3,7 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ImageShow from "./ImageShow";
 
 const ImageSlide = ({ slike }) => {
@@ -48,6 +48,7 @@ const ImageSlide = ({ slike }) => {
         <img
           src={slike[index]}
           className="imageSlideSlika"
+          alt="Proizvod"
           onClick={handleImageSlide}
         />
         <div className="divImageBroj">

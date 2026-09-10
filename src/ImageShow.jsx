@@ -30,7 +30,7 @@ const ImageShow = ({ slike, index, setIndex, setOpen }) => {
             onClick={handleClose}
           />
         </div>
-        <img src={slike[index]} className="imageShowSlika" />
+        <img src={slike[index]} className="imageShowSlika" alt="Proizvod"/>
         <div
           style={{
             justifyContent: "space-between",
