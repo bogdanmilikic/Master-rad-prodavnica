@@ -417,12 +417,12 @@ background-color: white;
 .prikazProizvodaDiv{
         position: fixed;
 width: 64%;
-height:90%;
+height:72%;
 margin: auto;
 border-radius: 10px;
 justify-content: center;
 align-items: center;
-    top:3%;
+    top:10%;
     left:19%;
     background-color: #ccc;
 z-index: 100;
@@ -509,7 +509,7 @@ overflow-y:auto;
 }
 .prikazProizvodaTekst{
     white-space: pre-line;
-    font-size: 16px;
+    font-size: 19px;
     margin: 0px;
 }
 .prikazProizvodaSrednjiDeo{
