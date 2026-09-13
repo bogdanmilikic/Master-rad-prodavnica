@@ -353,10 +353,10 @@ a{
 }
 .proizvodiDiv{
     position: relative;
-    
     border: 1px solid rgb(0, 0, 0,0.4);
     overflow: hidden;
     border-radius: 5px;
+    height: 400px;
     width: 20%;
     text-align: center;
 background-color: white;   
@@ -385,7 +385,11 @@ background-color: white;
 .proizvodiNaslov{
     font-size: 19px;
     padding: 0px;
-    margin: 0px;
+    margin: 15px;
+    display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .proizvodiButton{
     border-radius: 5px;
@@ -399,7 +403,7 @@ background-color: white;
     background-color: #2c3e50;
 }
 .proizvodiCena{
-    font-size: 18px;
+    font-size: 19px;
     margin: 15px;
 }
 .proizvodiKolicina{
@@ -416,7 +420,7 @@ background-color: white;
 }
 .prikazProizvodaDiv{
         position: fixed;
-width: 64%;
+width: 60%;
 height:72%;
 margin: auto;
 border-radius: 10px;
@@ -424,7 +428,7 @@ justify-content: center;
 align-items: center;
     top:10%;
     left:19%;
-    background-color: #ccc;
+    background-color: #c7c3c3;
 z-index: 100;
 padding:0 20px 20px 20px;
 overflow-y:auto;
@@ -432,8 +436,8 @@ overflow-y:auto;
 }
 .imageSlideDiv {
   position: relative;
-  width: 600px;
-  height: 350px;
+  width: 700px;
+  height: 450px;
   border-radius: 10px;
   overflow: hidden;
   margin: 20px auto;
@@ -532,7 +536,8 @@ gap: 20px;
 }
 .proizvodiCenaBezPopusta{
     text-decoration: line-through rgb(255,0,0) 3px;
-    font-size: 18px;
+    font-size: 19px;
+    margin: 0px;
 }
 .proizvodiPopustSlika{
     position:absolute;
@@ -540,4 +545,39 @@ gap: 20px;
     height: 50px;
     top: 10px;
     right: 10px;
+}
+.prikazProizvodaCena{
+ display:flex;
+    justify-content: left;
+    padding:0px;
+    font-size: 19px;
+    gap:15px;
+    align-items: center;
+    margin:0px;
+    
+}
+.prikazProizvodaPodNaslov{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+}
+.prikazProizvodaPodNaslovCena{
+      font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0 0 0;
+    padding: 0px;
+}
+.karticaLogo{
+    width: 70px;
+    height: 50px;
+}
+.prodavnicaMainProizvodi {
+    margin-top: 50px;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }

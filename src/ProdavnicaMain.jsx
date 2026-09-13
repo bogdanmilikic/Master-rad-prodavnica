@@ -18,7 +18,8 @@ proizvodjac:"",
 slike:[],
 opis:"",
 specifikacija:"",
-popust:"",
+popust:0,
+cena:0,
 }
 );
   const handleHome = () => {
@@ -59,14 +60,13 @@ const proizvodjaciSupabase = async () => {
 
   return (
     <div>
-      {prikazi?<PrikazProizvoda slike={izabraniProizvod.slike} slikesetPrikaz={setPrikazi} naslov={izabraniProizvod.naslov} proizvodjac={izabraniProizvod.proizvodjac} setPrikaz={setPrikazi} opis={izabraniProizvod.opis} specifikacija={izabraniProizvod.specifikacija}/>:undefined}
+      {prikazi?<PrikazProizvoda cena={izabraniProizvod.cena} popust={izabraniProizvod.popust} slike={izabraniProizvod.slike} slikesetPrikaz={setPrikazi} naslov={izabraniProizvod.naslov} proizvodjac={izabraniProizvod.proizvodjac} setPrikaz={setPrikazi} opis={izabraniProizvod.opis} specifikacija={izabraniProizvod.specifikacija}/>:undefined}
 
       <header>
         <GornjiDeo handleSlika={handleHome} />
       </header>
-    
-      <main style={{marginTop:"200px"}}>
-        {proizvodi.map((p) => 
+<main className="prodavnicaMainProizvodi">
+          {proizvodi.map((p) => 
             {
                  const proizvodjac = proizvodjaci.find(
             (pr) =>
@@ -91,6 +91,8 @@ const proizvodjaciSupabase = async () => {
   opis:p.opis,
   specifikacija:p.specifikacija,
   popust:p.popust,
+  cena:p.cena,
+  
 })}}/>
           </>)
 })}
