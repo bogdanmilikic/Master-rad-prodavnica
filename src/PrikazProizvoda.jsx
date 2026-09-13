@@ -21,7 +21,7 @@ const PrikazProizvoda=({setPrikaz,naslov,slike,proizvodjac,opis,specifikacija,ce
                     <hr/>
                     <menu className="prikazProizvodaCena">
  {popust!==null?<><p className="proizvodiCenaBezPopusta">{cena} RSD</p><p className="proizvodiCena">{popust} RSD</p>
-</>:<><p className="proizvodiCena"> {cena} RSD</p></>} <img className="karticaLogo"src="\Visa logo.png"/><img className="karticaLogo" src="\MasterCard logo.png"/></menu>
+</>:<><p className="proizvodiCena"> {cena} RSD</p></>} <img className="karticaLogo"src="\Visa logo.png" alt="Visa Logo"/><img className="karticaLogo" src="\MasterCard logo.png" alt="MasterCard Logo"/></menu>
 <FontAwesomeIcon icon={faTruckFast}/>   Dostava do 3 radna dana
                 </div>
                 
