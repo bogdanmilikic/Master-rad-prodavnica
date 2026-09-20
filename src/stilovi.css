@@ -488,6 +488,10 @@ overflow-y:auto;
     top: 10px;
     right: 10px;
 }
+.prikazProizvodaX:hover{
+    color: red;
+    transition: 0.3s ease-in-out;
+}
 .imageShowDiv {
   position: fixed;
   top: 0px;
@@ -573,11 +577,216 @@ gap: 20px;
     height: 50px;
 }
 .prodavnicaMainProizvodi {
-    margin-top: 50px;
     padding: 20px;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+}
+.sideBarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sideBarContainer.sideBarOtvoren {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.sideBarDiv {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    font-size: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+.sideBarOtvoren .sideBarDiv {
+    transform: translateX(0);
+}
+@keyframes sideBarIzlazak {
+    from {
+        transform: translateX(+100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.gasiSideBar {
+    border: none;
+    background-color: transparent;
+    font-size: 24px;
+    color: white;
+}
+
+.gasiSideBar:hover {
+    color: red;
+    transition: 0.3s ease-in-out;
+}
+
+.sideBarGornjiDeo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30px;
+    padding: 0px;
+    margin-top: -25px;
+}
+.comboBox {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    color: black;
+        font-size: 18px;
+
+}
+
+.comboInput {
+    width: 92%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.comboInput:focus {
+    outline: none;
+    border-radius: 10px 10px 0 0;
+    
+}
+.comboOpcije {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #aaa;
+    z-index: 100;
+    border-radius: 0 0 10px 10px;
+}
+
+.comboOpcije div {
+    padding: 10px;
+    cursor: pointer;
+    
+}
+
+.comboOpcije div:hover {
+    background-color: #eee;
+}
+
+.comboOpcije.show {
+    display: block;
+}
+.radioButtonAktivno{
+    color:#43607f;   
+   background-color:white;
+    font-size: 15px;
+    
+    text-align: center;
+display:flex;
+    justify-content: center;
+    align-items: center;
+margin:0px;
+    border:none;
+    border-radius:50px;
+    width: 25px;
+    height: 25px;
+
+}
+.raduoButtonNeaktivno{
+    background-color:white;
+    color: gray;
+    font-size: 15px;
+    
+    text-align: center;
+display:flex;
+    justify-content: center;
+    align-items: center;
+margin:0px;
+    border:none;
+    border-radius:50px;
+    width: 25px;
+    height: 25px;
+}
+.radioButtonDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radioButtonNaslov {
+    width: 10ch;      /* ili neka veća vrednost */
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word; /* omogućava prelamanje reči */
+}
+.sideBarRadioButtonDivContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.prodavnicaMainDiv{
+        margin-top: 85px;
+
+}
+.pretragaInput{
+    border-radius: 10px;
+    height: 100%;
+    width: 300px;
+    font-size: 20px;
+    border: none;
+    padding: 5px;
+    margin: 0px;
+}
+.pretragaInput:focus{
+     outline: none;
+    border:2px solid#43607f;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    height: 26px;
+    width: 296px;
+}
+.pretragaDiv{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 30px;
+    width: 91%;
+}
+.pretragaDugme{
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0 0 0 10px;
+    font-size: 20px;
+}
+.pretragaDugme:hover{
+    color: #2c3e50;
+    transition: 0.1s ease-in-out;
+    background-color: rgb(161, 161, 161);
+        transform: translateY(-2px);
+}
+.nemaProizvoda{
+    font-size: 28px;
 }
