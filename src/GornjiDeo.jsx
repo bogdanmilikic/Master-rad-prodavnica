@@ -1,4 +1,23 @@
-const GornjiDeo=({aktivno,setAktivno,kontaktScroll,oNamaScroll,setTrenutnaPozicija,setScroll,prviId,drugiId,handleProdavnica,handleSlika,vidjliviDugmici,aktivnoDugme})=>{
+import DropDown from "./DropDown";
+
+const GornjiDeo=({aktivno,
+  setAktivno,
+  kontaktScroll,
+  oNamaScroll,
+  setTrenutnaPozicija,
+  setScroll,
+  prviId,
+  drugiId,
+  handleProdavnica,
+  handleSlika,
+  vidjliviDugmici,
+  aktivnoDugme,
+  korisnickoIme,
+  setKorisnickoIme,
+  setOpenPrijava,
+  setOpenRegistracija,
+}
+)=>{
 
    const handleInfo = () => {
     setScroll(false);
@@ -27,8 +46,8 @@ const GornjiDeo=({aktivno,setAktivno,kontaktScroll,oNamaScroll,setTrenutnaPozici
 <button className={aktivno===1?"gornjiDeoButtonAktivno":"gornjiDeoButton"} onClick={handleInfo}>O nama</button>
 <button className={aktivno===2?"gornjiDeoButtonAktivno":"gornjiDeoButton"} onClick={handleKontakt}>Kontakt </button>
 <button className="gornjiDeoButton" onClick={handleProdavnica}>Prodavnica</button>
-</menu>:undefined}
-   
+</menu>: <DropDown korisnickoIme={korisnickoIme}  handleOdjava={()=>setKorisnickoIme("")} handlePrijava={()=>{setOpenPrijava(true)}} handleRegistracija={()=>{setOpenRegistracija(true)}}/>}
+  
 </div>
     );
 };
