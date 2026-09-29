@@ -9,6 +9,11 @@ import SideBar from './SideBar';
 import Pretraga from './Pretraga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import OdlozeniPrikaz from './config/OdlozenPrikaz';
+import Prijava from './config/Prijava';
+import Registracija from './Registracija';
+import DonjiDeo from './DonjiDeo';
+import PromenaLozinke from './config/PromenaLozinke';
 
 const  ProdavnicaMain=()=> {
   const navigate = useNavigate();
@@ -22,6 +27,10 @@ const [sortiranje,setSortiranje]=useState("");
 const [izabraniTip,setIzabraniTip]=useState("");
 const [pretragaVrednost,setPretragaVrednost]=useState("");
 const [pretraga,setPretraga]=useState("")
+const [korisnickoIme,setKorisnickoIme]=useState("");
+const [openPrijava,setOpenPrijava]=useState(false);
+const [openRegistracija,setOpenRegistracija]=useState(false);
+const [promenaLozinkeOpen,setPromenaLozinke]=useState(false);
 const [izabraniProizvod,setIzabraniProizvd]=useState({
 naslov:"",
 proizvodjac:"",
@@ -114,9 +123,12 @@ return a.cena-b.cena;
   return (
     <div >
       {prikazi?<PrikazProizvoda cena={izabraniProizvod.cena} popust={izabraniProizvod.popust} slike={izabraniProizvod.slike} slikesetPrikaz={setPrikazi} naslov={izabraniProizvod.naslov} proizvodjac={izabraniProizvod.proizvodjac} setPrikaz={setPrikazi} opis={izabraniProizvod.opis} specifikacija={izabraniProizvod.specifikacija}/>:undefined}
+    {openPrijava?<Prijava handleGasi={()=>setOpenPrijava(false)} setKorisnickoIme={setKorisnickoIme} setPromenaLozinke={setPromenaLozinke}/>:undefined}
+    {openRegistracija?<Registracija handleGasi={()=>{setOpenRegistracija(false)}}/>:undefined}
+      {promenaLozinkeOpen?      <PromenaLozinke setGasi={setPromenaLozinke}/>:undefined}
 
       <header>
-        <GornjiDeo handleSlika={handleHome} />
+        <GornjiDeo handleSlika={handleHome} korisnickoIme={korisnickoIme} setKorisnickoIme={setKorisnickoIme} setOpenPrijava={setOpenPrijava} setOpenRegistracija={setOpenRegistracija}/>
       </header>
       <main className="prodavnicaMainDiv">
         <div className="pretragaDiv">
@@ -125,7 +137,8 @@ return a.cena-b.cena;
 
         </div>
 <div className="prodavnicaMainProizvodi">
-  {filtriraniProizvodi.length===0?<p className="nemaProizvoda">Nema proizvoda</p>:undefined}
+  
+  {filtriraniProizvodi.length===0?<OdlozeniPrikaz vreme={500} sadrzaj={<p className="nemaProizvoda">Nema proizvoda</p>}/>:undefined}
           {filtriraniProizvodi.map((p) => 
             {
                  const proizvodjac = proizvodjaci.find(
@@ -169,6 +182,8 @@ return a.cena-b.cena;
     handleSideBar={() => setOtvoriSideBar(false)}
 />
     </main>
+<footer style={filtriraniProizvodi.length < 10 ? { marginTop:"1000px" } : undefined}>      <DonjiDeo/>
+    </footer>
     </div>
   );
 }
