@@ -7,28 +7,28 @@ import emailjs from "@emailjs/browser";
 import Alert from "./Alert";
 
 
-const Forma=()=>{
-const [posalji,setPosalji]=useState(true);
-const [openPopUp,setOpenPopUp]=useState(false);
-const [poruka,setPoruka]=useState("");
-const [ime,setIme]=useState("");
-const [eMail,setEMail]=useState("");
-const [pitanje,setPitanje]=useState("");
- const eMailRef = useRef(null);
+const Forma = () => {
+  const [posalji, setPosalji] = useState(true);
+  const [openPopUp, setOpenPopUp] = useState(false);
+  const [poruka, setPoruka] = useState("");
+  const [ime, setIme] = useState("");
+  const [eMail, setEMail] = useState("");
+  const [pitanje, setPitanje] = useState("");
+  const eMailRef = useRef(null);
   const [obavestenje, setObavestenje] = useState(false);
   const [uspesno, setUspesno] = useState(false);
 
- const [prviBroj,setPrviBroj]=useState(Math.floor(Math.random() * 100));
- const [drugiBroj,setDrugiBroj]=useState(Math.floor(Math.random() * 100));
- const handleOpenProvera=()=>{
+  const [prviBroj, setPrviBroj] = useState(Math.floor(Math.random() * 100));
+  const [drugiBroj, setDrugiBroj] = useState(Math.floor(Math.random() * 100));
+  const handleOpenProvera = () => {
     setOpenPopUp(true);
- }
- const handleClose=()=>{
+  }
+  const handleClose = () => {
     setOpenPopUp(false);
- }
+  }
   const handlePitanje = (e) => {
     e.preventDefault();
- if (ime.trim() === "" || ime.trim() === undefined) {
+    if (ime.trim() === "" || ime.trim() === undefined) {
       setPoruka(
         "'Ime i prezime' polje mora biti popunjeno da bi se poslalo Vaše pitanje"
       );
@@ -38,12 +38,12 @@ const [pitanje,setPitanje]=useState("");
     }
     if (eMail.trim() === "" || eMailRef.current.checkValidity() === false) {
       setPoruka(
-      "Uneti validnu e-mail adresu" );
+        "Uneti validnu e-mail adresu");
       setUspesno(false);
       setObavestenje(true);
       return;
     }
-   
+
     if (pitanje.trim() === "" || pitanje.trim() === undefined) {
       setPoruka("'Pitanje' polje mora biti popunjeno da bi se poslalo Vaše pitanje"
       );
@@ -59,10 +59,10 @@ const [pitanje,setPitanje]=useState("");
 
     emailjs
       .send(
-        "service_y6nw619", 
-        "template_8c8g3a2", 
-        templateParams, 
-        "wZnVJXd8aNkTqP1ik" ,
+        "service_y6nw619",
+        "template_8c8g3a2",
+        templateParams,
+        "wZnVJXd8aNkTqP1ik",
       )
       .then(
         (response) => {
@@ -86,27 +86,27 @@ const [pitanje,setPitanje]=useState("");
         }
       );
   };
-    return(
-        <>
-        {obavestenje ? (
+  return (
+    <>
+      {obavestenje ? (
         <Alert
           setOpen={setObavestenje}
           uspesno={uspesno}
           poruka={poruka}
         />
       ) : undefined}
-        {openPopUp?<PopUp prviBroj={prviBroj} drugiBroj={drugiBroj} setDrugiBroj={setDrugiBroj} setPrviBroj={setPrviBroj} handleClose={handleClose} setPosalji={setPosalji}/>:null}
-        <div className="formaDiv">
-            
-            <input className="formaInput" placeholder="Unesite vaše ime i prezime" value={ime} onChange={(e)=>{setIme(e.target.value)}} required/>
-                        <input className="formaInput" placeholder="Unesite vaše email" value={eMail} onChange={(e)=>{setEMail(e.target.value)}}  type="email" ref={eMailRef}
-        required/>
-                        <textarea className="formaPolje" placeholder="Unesite vaše pitanje" value={pitanje} onChange={(e)=>{setPitanje(e.target.value)}} required/>
-                        <menu style={{display:"flex",justifyContent:"space-between",margin:"0px",padding:"0px",gap:"10px",width:"98.7%"}}>
-               <button title={!posalji ? "Niste robot :)" : ""} disabled={!posalji}onClick={handleOpenProvera} className="formaDugmeCapcha" style={!posalji ? {backgroundColor:"green"} : null}>Provera <FontAwesomeIcon icon={faRobot}/></button>
-   <button disabled={posalji} title={posalji ? "Prvo provera" : ""} className="formaDugme" style={posalji ? {backgroundColor:"gray"} : null} onClick={handlePitanje}>Pošalji <FontAwesomeIcon icon={faPaperPlane} /></button>
- </menu>
-        </div></>
-    )
+      {openPopUp ? <PopUp prviBroj={prviBroj} drugiBroj={drugiBroj} setDrugiBroj={setDrugiBroj} setPrviBroj={setPrviBroj} handleClose={handleClose} setPosalji={setPosalji} /> : null}
+      <div className="formaDiv">
+
+        <input className="formaInput" placeholder="Unesite vaše ime i prezime" value={ime} onChange={(e) => { setIme(e.target.value) }} required />
+        <input className="formaInput" placeholder="Unesite vaše email" value={eMail} onChange={(e) => { setEMail(e.target.value) }} type="email" ref={eMailRef}
+          required />
+        <textarea className="formaPolje" placeholder="Unesite vaše pitanje" value={pitanje} onChange={(e) => { setPitanje(e.target.value) }} required />
+        <menu className="formaMeniDugmici">
+          <button title={!posalji ? "Niste robot :)" : ""} disabled={!posalji} onClick={handleOpenProvera} className="formaDugmeCapcha" style={!posalji ? { backgroundColor: "green" } : null}>Provera <FontAwesomeIcon icon={faRobot} /></button>
+          <button disabled={posalji} title={posalji ? "Prvo provera" : ""} className="formaDugme" style={posalji ? { backgroundColor: "gray" } : null} onClick={handlePitanje}>Pošalji <FontAwesomeIcon icon={faPaperPlane} /></button>
+        </menu>
+      </div></>
+  )
 }
 export default Forma;

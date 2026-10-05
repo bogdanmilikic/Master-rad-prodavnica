@@ -2,14 +2,10 @@ import { faArrowUpRightFromSquare, faCheck, faDoorOpen } from "@fortawesome/free
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import supabase from "../supabaseClient";
-import Alert from "../Alert";
 
-const Prijava=({korisnickoIme,setKorisnickoIme,handleGasi,setPromenaLozinke})=>{
+const Prijava=({setPoruka,setUspesno,setOpenAlert,korisnickoIme,setKorisnickoIme,handleGasi,setPromenaLozinke,setKorisnikID})=>{
 const [korisnik,setKorisinik]=useState("");
 const [sifra,setSifra]=useState("");
-const [poruka,setPoruka]=useState("");
-const [openAlert,setOpenAlert]=useState(false);
-const [uspesno,setUspesno]=useState();
 const handlePrijava = async () => {
     if (korisnik === ""){
         setPoruka("Unesite korisničko ime !");
@@ -43,16 +39,17 @@ const handlePrijava = async () => {
         return;
     }
     setKorisnickoIme(data.naziv);
+    setKorisnikID(data.korisnikId);
     setPoruka("Uspešna prijava !");
     setUspesno(true);
     setOpenAlert(true);
     setTimeout(()=>{"Unesite korisničko ime i lozinku!"},1200);
+    handleGasi();
 };
     return(
         <div className="popUpContainer">
 <div className="prijavaSadrzaj">
-      {openAlert?    <Alert poruka={poruka} setOpen={setOpenAlert} uspesno={uspesno}/>
-:undefined}
+    
     <h1>Prijava <FontAwesomeIcon icon={faArrowUpRightFromSquare}/></h1>
     <hr/>
     <input className="inputPrijava" placeholder="Unesite vaše korisničko ime" value={korisnik} onChange={(e)=>{setKorisinik(e.target.value)}}/>
