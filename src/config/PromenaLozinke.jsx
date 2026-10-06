@@ -2,9 +2,8 @@ import { faArrowRight, faCheck, faDoorOpen, faLock } from "@fortawesome/free-sol
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import supabase from "../supabaseClient";
-import Alert from "../Alert";
 
-const PromenaLozinke=({setGasi})=>{
+const PromenaLozinke=({setGasi,setOpenAlert,setPoruka,setUspesno})=>{
     const handleGasi=()=>{
         setGasi(false);
     }
@@ -13,9 +12,6 @@ const PromenaLozinke=({setGasi})=>{
     const [korisnickoIme,setKorisnickoIme]=useState("");
     const [brojTelefona,setBrojTelefona]=useState("");
     const [eMail,setEMail]=useState("");
-    const [poruka,setPoruka]=useState("");
-    const [openAlert,setOpenAlert]=useState(false);
-    const [uspesno,setUspesno]=useState(false);
     const [novaLozinka,setNovaLozinka]=useState("");
 const handlePromenaLozinke = async () => {
 
@@ -90,6 +86,8 @@ const handlePotvrdiNovuLozinku = async () => {
     setUspesno(true);
     setOpenAlert(true);
         setNovaLozinka("");    
+            handleGasi();
+
 
 };
     const sadrzaj=[<>
@@ -109,7 +107,6 @@ const handlePotvrdiNovuLozinku = async () => {
     return(
  <div className="popUpContainer">
 <div className="promenaLozinkeStavke">
-   {openAlert?<Alert poruka={poruka} setOpen={setOpenAlert} uspesno={uspesno}/>:undefined} 
     <h1>Promena lozinke <FontAwesomeIcon icon={faLock}/></h1>
     <hr/>
     {odobrenaPromena!==true?sadrzaj[0]:sadrzaj[1]}

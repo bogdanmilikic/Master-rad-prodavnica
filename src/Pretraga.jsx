@@ -14,6 +14,10 @@ const Pretraga = ({ vrednost, setVrednost, handlePretraga }) => {
                 value={vrednost}
                 placeholder="Pretraga"
                 className="pretragaInput"
+                onKeyDown={(e) => {
+        if (e.key === "Enter")
+            handlePretraga();
+        }}
             />
             <button
                 className="pretragaDugme"

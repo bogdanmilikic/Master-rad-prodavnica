@@ -1,27 +1,30 @@
-body{
+body {
     margin: 0;
     padding: 0;
-background-color:rgb(231, 226, 220);
-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgb(231, 226, 220);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-hr{
+
+hr {
 
     width: 99%
 }
 
-.logo{
+.logo {
     width: 180px;
     height: 40px;
     margin-left: 10px;
     cursor: pointer;
 }
-.gornjiDeoMeni{
+
+.gornjiDeoMeni {
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 100%;
 }
-.gornjiDeoDiv{
+
+.gornjiDeoDiv {
     position: fixed;
     top: 0;
     display: flex;
@@ -29,38 +32,42 @@ hr{
     background-color: rgb(0, 0, 0, 0.9);
     height: 50px;
     width: 100%;
-z-index: 2;
+    z-index: 2;
 }
-.gornjiDeoButton{
+
+.gornjiDeoButton {
     background-color: transparent;
     border: none;
     color: white;
     font-size: 16px;
     cursor: pointer;
-     cursor: pointer;
+    cursor: pointer;
 
     transition: background-color 0.3s ease;
     font-size: 20px;
     height: 100%;
     width: 150px;
 }
+
 .gornjiDeoButton:hover {
     background-color: rgba(255, 255, 255, 0.2);
 
 }
-.gornjiDeoButtonAktivno{
-     background-color: rgba(255, 255, 255, 0.2);
- border: none;
+
+.gornjiDeoButtonAktivno {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
     color: white;
     font-size: 16px;
     cursor: pointer;
- 
+
     transition: background-color 0.3s ease;
     font-size: 20px;
     height: 100%;
     width: 150px;
 }
-.tekstDiv{
+
+.tekstDiv {
     width: 80%;
     align-items: justify;
     justify-content: left;
@@ -68,41 +75,60 @@ z-index: 2;
     margin: 20px auto;
     border-radius: 10px;
     padding: 20px;
-    background-color: rgb(255, 255, 255,0.7);
+    background-color: rgb(255, 255, 255, 0.7);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.tekstNaslov{
+
+.tekstNaslov {
     font-size: 24px;
     margin-bottom: 10px;
 }
-.tekstP{
+
+.tekstP {
     font-size: 19px;
     line-height: 1.5;
     text-align: justify;
 }
-.kontaktDiv{
+
+.kontaktDiv {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     align-items: left;
-    padding: 10px;
     width: 100%;
 }
-.kontaktZadrzaj{
-    width:100%;
+
+.kontaktSadrzaj {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: left;
+    width: 100%;
+    grid: 1fr 1fr;
 }
-iframe{
-    width:100%;
-    height:340px; 
-    border:0;
+
+.kontaktSadrzaj {
+    width: 100%;
+}
+
+.kontaktMapa {
+    width: 60%;
+}
+
+iframe {
+    width: 100%;
+    height: 340px;
+    border: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.lokacijaHr{
+
+.lokacijaHr {
 
     width: 50%;
 }
-.formaInput{
-    width: 95%;
+
+.formaInput {
+    width: 96%;
     font-size: 16px;
     padding: 10px;
     margin-bottom: 10px;
@@ -110,26 +136,41 @@ iframe{
     border-radius: 4px;
     height: 20px;
 }
-.formaInput:focus{
+
+.formaInput:focus {
     outline: none;
     height: 18px;
-    border:2px solid#43607f;
+    border: 2px solid#43607f;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.mainDiv{
-    margin-top:70px;
+
+.formaMeniDugmici {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+    gap: 10px;
+    width: 99.5%;
 }
-.kontaktDiv{
+
+.mainDiv {
+    margin-top: 70px;
+}
+
+.kontaktDiv {
     scroll-margin-top: 50px;
 }
-.oNamaDiv{
+
+.oNamaDiv {
     scroll-margin-top: 70px;
 }
-.formaDiv{
+
+.formaDiv {
     width: 100%;
 }
-.formaPolje{
-    width: 95%;
+
+.formaPolje {
+    width: 96%;
     font-size: 16px;
     padding: 10px;
     margin-bottom: 10px;
@@ -138,13 +179,15 @@ iframe{
     resize: none;
     height: 150px;
 }
-.formaPolje:focus{
+
+.formaPolje:focus {
     outline: none;
     height: 148px;
-    border:2px solid#43607f;
+    border: 2px solid#43607f;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.formaDugme{
+
+.formaDugme {
     background-color: #43607f;
     color: white;
     border: none;
@@ -155,10 +198,12 @@ iframe{
     height: 55px;
     width: 50%;
 }
-.formaDugme:hover{
+
+.formaDugme:hover {
     background-color: #2c3e50;
 }
-.formaDugmeCapcha{
+
+.formaDugmeCapcha {
     background-color: rgb(152, 80, 80);
     width: 50%;
     color: white;
@@ -169,49 +214,56 @@ iframe{
     border-radius: 4px;
     height: 55px;
 }
-.formaDugmeCapcha:hover{
+
+.formaDugmeCapcha:hover {
     background-color: rgb(100, 50, 50);
 }
-.kontaktPoljeContainer{
+
+.kontaktPoljeContainer {
     padding-top: 20px;
     width: 33%;
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-background-color: rgb(255, 255, 255,0.2);
-border-radius: 10px;
-justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgb(255, 255, 255, 0.2);
+    border-radius: 10px;
+    justify-content: center;
     text-align: center;
     z-index: 1;
 }
-.kontaktPoljeDiv{
+
+.kontaktPoljeDiv {
     justify-content: center;
     text-align: center;
     display: flex;
-   
+
 }
-.kontaktPoljeContainer:hover{
+
+.kontaktPoljeContainer:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
     transition: all 0.3s ease;
-    background-color: rgb(255, 255, 255,0.6);
+    background-color: rgb(255, 255, 255, 0.6);
     z-index: 1;
 }
-.kontaktPoljeIkonica{
+
+.kontaktPoljeIkonica {
     font-size: 24px;
-  
-  
+
+
     text-align: center;
     justify-content: center;
     align-items: center;
     padding: 10px;
     border-radius: 500px;
     width: 60px;
-    border: 4px dotted black ;
+    border: 4px dotted black;
 }
-.kontaktPoljeTekst{
+
+.kontaktPoljeTekst {
     font-size: 19px;
     line-height: 1.5;
 }
-.popUpContainer{
+
+.popUpContainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -223,105 +275,117 @@ justify-content: center;
     align-items: center;
     z-index: 99;
 }
-.popUpSadrzaj{
+
+.popUpSadrzaj {
     position: fixed;
-width: 19%;
-margin: auto;
-border-radius: 10px;
-justify-content: center;
-align-items: center;
-    top:25%;
-    left:39%;
+    width: 19%;
+    margin: auto;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 25%;
+    left: 39%;
     background-color: #ccc;
-z-index: 100;
-padding:0 20px 20px 20px;
+    z-index: 100;
+    padding: 0 20px 20px 20px;
 }
-.popUpBroj{
-border: 3px solid black;
-width: auto;
-border-radius: 10px;
-padding: 5px;
-font-size: 24px;
-text-align: center;
-width: 10%;
+
+.popUpBroj {
+    border: 3px solid black;
+    width: auto;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 24px;
+    text-align: center;
+    width: 10%;
 }
-.popUpGasi{
+
+.popUpGasi {
     position: absolute;
-    top:-10px;
+    top: -10px;
     right: -15px;
     border: none;
     background-color: transparent;
     font-size: 24px;
-        cursor: pointer;
+    cursor: pointer;
 
 }
-.popUpGasi:hover{
-   color: red;
-   transition: 0.1s;
-   cursor: pointer;
+
+.popUpGasi:hover {
+    color: red;
+    transition: 0.1s;
+    cursor: pointer;
 }
+
 @keyframes slideUlaz {
-  0% {
-    transform: translateX(300px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
+    0% {
+        transform: translateX(300px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
+
 @keyframes slideIzlaz {
-  0% {
-    transform: translateX(0px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(300px);
-    opacity: 0;
-  }
+    0% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(300px);
+        opacity: 0;
+    }
 }
+
 .alertObavestenjeUlaz {
-  animation: slideUlaz 1.2s;
-  position: fixed;
-  top: 25%;
-  right: 0%;
-  z-index: 1000;
+    animation: slideUlaz 1.2s;
+    position: fixed;
+    top: 25%;
+    right: 0%;
+    z-index: 1000;
     height: 30px;
-  border-radius: 25px 0px 0px 25px;
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
+    border-radius: 25px 0px 0px 25px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
+
 .alertObavestenjeIzlaz {
-  position: fixed;
-  top: 25%;
-  right: 0%;
+    position: fixed;
+    top: 25%;
+    right: 0%;
     height: 30px;
-  z-index: 1000;
-  border-radius: 25px 0px 0px 25px;
-  color: white;
-  text-align: center;
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  animation: slideIzlaz 1.2s;
-  opacity: 0;
+    z-index: 1000;
+    border-radius: 25px 0px 0px 25px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    animation: slideIzlaz 1.2s;
+    opacity: 0;
 }
+
 .alertDugme {
-  border: none;
-  background-color: transparent;
-  height: 30px;
-  color: white;
-  font-size: 20px;
-  margin-left: 20px;
+    border: none;
+    background-color: transparent;
+    height: 30px;
+    color: white;
+    font-size: 20px;
+    margin-left: 20px;
 }
-.donjiDeoDiv{
+
+.donjiDeoDiv {
     position: relative;
     bottom: 0px;
     width: 100%;
@@ -331,161 +395,184 @@ width: 10%;
     background-color: rgb(0, 0, 0, 0.9);
     padding: 5px;
 }
-.donjiDeoLogo{
-width: 180px;
+
+.donjiDeoLogo {
+    width: 180px;
     height: 40px;
-   
+
 }
-.donjiDeoDugmeDiv{
+
+.donjiDeoDugmeDiv {
     position: inherit;
 
 }
-.donjiDeoDugme{
-margin-right: 10px;
-font-size: 20px;
-padding: 2px;
-border-radius: 100px;
-border: none;
+
+.donjiDeoDugme {
+    margin-right: 10px;
+    font-size: 20px;
+    padding: 2px;
+    border-radius: 100px;
+    border: none;
 }
-.donjiDeoDugme:hover{
-       transform: translateY(-2px);
+
+.donjiDeoDugme:hover {
+    transform: translateY(-2px);
 }
-a{
+
+a {
     text-decoration: none;
     color: inherit;
 }
-.proizvodiDiv{
+
+.proizvodiDiv {
     position: relative;
-    border: 1px solid rgb(0, 0, 0,0.4);
+    border: 1px solid rgb(0, 0, 0, 0.4);
     overflow: hidden;
     border-radius: 5px;
     height: 400px;
     width: 20%;
     text-align: center;
-background-color: white;   
- box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 0px 0px 10px 0px;
     color: black;
     font-weight: bold;
 }
-.proizvodiDiv:hover{
+
+.proizvodiDiv:hover {
     transition: 0.3s;
- box-shadow: 0px 5px 10px rgb(0, 0, 0);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0);
 
 }
-.proizvodiSlika{
+
+.proizvodiSlika {
     width: 100%;
     height: 230px;
     padding: 0px;
 }
-.proizvodiMeni{
+
+.proizvodiMeni {
     display: flex;
     margin: 10px;
     gap: 10px;
     padding: 0px;
     justify-content: center;
 }
-.proizvodiNaslov{
+
+.proizvodiNaslov {
     font-size: 19px;
     padding: 0px;
     margin: 15px;
     display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
-.proizvodiButton{
+
+.proizvodiButton {
     border-radius: 5px;
     background-color: #43607f;
     color: white;
     border: none;
     font-size: 18px;
     padding: 10px;
-        cursor: pointer;
+    cursor: pointer;
 
 }
-.proizvodiButton:hover{
+
+.proizvodiButton:hover {
     background-color: #2c3e50;
 }
-.proizvodiCena{
+
+.proizvodiCena {
     font-size: 19px;
     margin: 15px;
 }
-.proizvodiKolicina{
+
+.proizvodiKolicina {
     width: 50px;
     border: none;
     padding: 10px;
     border: 2px solid #ccc;
-      border-radius: 4px;
-      font-size: 16px;
+    border-radius: 4px;
+    font-size: 16px;
 }
-.proizvodiKolicina:focus{
-      border:2px solid#43607f;
+
+.proizvodiKolicina:focus {
+    border: 2px solid#43607f;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.prikazProizvodaDiv{
-        position: fixed;
-width: 60%;
-height:72%;
-margin: auto;
-border-radius: 10px;
-justify-content: center;
-align-items: center;
-    top:10%;
-    left:19%;
+
+.prikazProizvodaDiv {
+    position: fixed;
+    width: 65%;
+    height: 72%;
+    margin: auto;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    left: 17%;
     background-color: #c7c3c3;
-z-index: 100;
-padding:0 20px 20px 20px;
-overflow-y:auto;
+    z-index: 100;
+    padding: 0 20px 20px 20px;
+    overflow-y: auto;
 
 }
+
 .imageSlideDiv {
-  position: relative;
-  width: 700px;
-  height: 450px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 20px auto;
-  background-color: #181717;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 700px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px auto;
+    background-color: #181717;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
+
 .imageSlideDugmici {
-  height: 60px;
-  width: 5%;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  background-color: rgba(82, 81, 81, 0.555);
-  font-size: larger;
-  z-index: 1000;
+    height: 60px;
+    width: 5%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(82, 81, 81, 0.555);
+    font-size: larger;
+    z-index: 1000;
 }
+
 .imageSlideDugmici:hover {
-  background-color: rgba(82, 81, 81);
-  transition: 0.4s ease-in-out;
+    background-color: rgba(82, 81, 81);
+    transition: 0.4s ease-in-out;
 }
+
 .imageSlideSlika {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: fill; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    background-color: white;
 }
+
 .divImageBroj {
-  font-size: 20px;
-  z-index: 1002;
-  position: absolute;
-  top: 87%;
-  left: 45%;
-  border-radius: 20px;
-  background-color: rgb(0, 0, 0, 0.7);
-  padding: 4px;
-  color: white;
+    font-size: 20px;
+    z-index: 1002;
+    position: absolute;
+    top: 87%;
+    left: 45%;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 4px;
+    color: white;
 }
-.prikazProizvodaX{
+
+.prikazProizvodaX {
     font-size: 24px;
     border: none;
     background-color: transparent;
@@ -493,96 +580,113 @@ overflow-y:auto;
     top: 10px;
     right: 10px;
 }
-.prikazProizvodaX:hover{
+
+.prikazProizvodaX:hover {
     color: red;
     transition: 0.3s ease-in-out;
 }
+
 .imageShowDiv {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 1003;
-  overflow: hidden;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1003;
+    overflow: hidden;
 }
+
 .imageShowGasi {
-  color: black;
-  font-size: 20px;
-  position: absolute;
-  top: 5px;
-  right: 7px;
-      cursor: pointer;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    cursor: pointer;
 
 }
+
 .imageShowSlika {
-  width: 100%;
-  height: 90%;
-  border-radius: 5px;
-  object-fit: fill;
+    width: 100%;
+    height: 90%;
+    border-radius: 5px;
+    object-fit: fill;
+    background-color: white;
 }
-.prikazProizvodaTekst{
+
+.prikazProizvodaTekst {
     white-space: pre-line;
     font-size: 19px;
     margin: 0px;
 }
-.prikazProizvodaSrednjiDeo{
-white-space: pre-line;
-display: flex;
-gap: 20px;
+
+.prikazProizvodaSrednjiDeo {
+    white-space: pre-line;
+    display: flex;
+    gap: 20px;
 
 }
-.prikazProizvodaNaslov{
+
+.prikazProizvodaNaslov {
     font-size: 24px;
     font-weight: bold;
 }
-.proizvodiCena{
-    display:flex;
+
+.proizvodiCena {
+    display: flex;
     justify-content: center;
-    margin:0px;
-    padding:0px;
-    gap:15px;
+    margin: 0px;
+    padding: 0px;
+    gap: 15px;
     align-items: center;
 }
-.proizvodiCenaBezPopusta{
-    text-decoration: line-through rgb(255,0,0) 3px;
+
+.proizvodiCenaBezPopusta {
+    text-decoration: line-through rgb(255, 0, 0) 3px;
     font-size: 19px;
     margin: 0px;
 }
-.proizvodiPopustSlika{
-    position:absolute;
+
+.proizvodiPopustSlika {
+    position: absolute;
     width: 50px;
     height: 50px;
     top: 10px;
     right: 10px;
 }
-.prikazProizvodaCena{
- display:flex;
+
+.prikazProizvodaCena {
+    display: flex;
     justify-content: left;
-    padding:0px;
+    padding: 0px;
     font-size: 19px;
-    gap:15px;
+    gap: 15px;
     align-items: center;
-    margin:0px;
-    
+    margin: 0px;
+    font-weight: bold;
+
 }
-.prikazProizvodaPodNaslov{
+
+.prikazProizvodaPodNaslov {
     font-size: 20px;
     font-weight: bold;
     margin: 0px;
     padding: 0px;
 }
-.prikazProizvodaPodNaslovCena{
-      font-size: 20px;
+
+.prikazProizvodaPodNaslovCena {
+    font-size: 20px;
     font-weight: bold;
     margin: 15px 0 0 0;
     padding: 0px;
 }
-.karticaLogo{
+
+.karticaLogo {
     width: 70px;
     height: 50px;
 }
+
 .prodavnicaMainProizvodi {
     padding: 20px;
     justify-content: center;
@@ -591,6 +695,7 @@ gap: 20px;
     flex-wrap: wrap;
     gap: 20px;
 }
+
 .sideBarContainer {
     position: fixed;
     top: 0;
@@ -624,9 +729,11 @@ gap: 20px;
     transform: translateX(100%);
     transition: transform 0.3s ease;
 }
+
 .sideBarOtvoren .sideBarDiv {
     transform: translateX(0);
 }
+
 @keyframes sideBarIzlazak {
     from {
         transform: translateX(+100%);
@@ -642,7 +749,7 @@ gap: 20px;
     background-color: transparent;
     font-size: 24px;
     color: white;
-        cursor: pointer;
+    cursor: pointer;
 
 }
 
@@ -659,12 +766,13 @@ gap: 20px;
     padding: 0px;
     margin-top: -25px;
 }
+
 .comboBox {
     position: relative;
     display: inline-block;
     width: 250px;
     color: black;
-        font-size: 18px;
+    font-size: 18px;
 
 }
 
@@ -678,11 +786,13 @@ gap: 20px;
     font-size: 16px;
     cursor: pointer;
 }
+
 .comboInput:focus {
     outline: none;
     border-radius: 10px 10px 0 0;
-    
+
 }
+
 .comboOpcije {
     display: none;
     position: absolute;
@@ -696,7 +806,7 @@ gap: 20px;
 .comboOpcije div {
     padding: 10px;
     cursor: pointer;
-    
+
 }
 
 .comboOpcije div:hover {
@@ -706,62 +816,70 @@ gap: 20px;
 .comboOpcije.show {
     display: block;
 }
-.radioButtonAktivno{
-    color:#43607f;   
-   background-color:white;
+
+.radioButtonAktivno {
+    color: #43607f;
+    background-color: white;
     font-size: 15px;
-    
+
     text-align: center;
-display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-margin:0px;
-    border:none;
-    border-radius:50px;
+    margin: 0px;
+    border: none;
+    border-radius: 50px;
     width: 25px;
     height: 25px;
 
 }
-.raduoButtonNeaktivno{
-    background-color:white;
+
+.raduoButtonNeaktivno {
+    background-color: white;
     color: gray;
     font-size: 15px;
-    
+
     text-align: center;
-display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-margin:0px;
-    border:none;
-    border-radius:50px;
+    margin: 0px;
+    border: none;
+    border-radius: 50px;
     width: 25px;
     height: 25px;
 }
+
 .radioButtonDiv {
     display: flex;
     align-items: center;
     gap: 10px;
-        cursor: pointer;
+    cursor: pointer;
 
 }
 
 .radioButtonNaslov {
-    width: 10ch;      /* ili neka veća vrednost */
+    width: 10ch;
+    /* ili neka veća vrednost */
     text-align: right;
     margin: 0;
     padding: 0;
-    overflow-wrap: break-word; /* omogućava prelamanje reči */
+    overflow-wrap: break-word;
+    /* omogućava prelamanje reči */
 }
-.sideBarRadioButtonDivContainer{
+
+.sideBarRadioButtonDivContainer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-.prodavnicaMainDiv{
-        margin-top: 85px;
+
+.prodavnicaMainDiv {
+    margin-top: 85px;
 
 }
-.pretragaInput{
+
+.pretragaInput {
     border-radius: 10px;
     height: 100%;
     width: 300px;
@@ -770,115 +888,127 @@ margin:0px;
     padding: 5px;
     margin: 0px;
 }
-.pretragaInput:focus{
-     outline: none;
-    border:2px solid#43607f;
+
+.pretragaInput:focus {
+    outline: none;
+    border: 2px solid#43607f;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     height: 26px;
     width: 296px;
 }
-.pretragaDiv{
+
+.pretragaDiv {
     display: flex;
     justify-content: right;
     align-items: center;
     height: 30px;
     width: 91%;
 }
-.pretragaDugme{
+
+.pretragaDugme {
     border: none;
     background-color: white;
     border-radius: 10px;
     padding: 5px;
     margin: 0 0 0 10px;
     font-size: 20px;
-        cursor: pointer;
+    cursor: pointer;
 
 }
-.pretragaDugme:hover{
+
+.pretragaDugme:hover {
     color: #2c3e50;
     transition: 0.1s ease-in-out;
     background-color: rgb(161, 161, 161);
-        transform: translateY(-2px);
+    transform: translateY(-2px);
 }
-.nemaProizvoda{
+
+.nemaProizvoda {
     font-size: 28px;
 }
-.ucitavanjeTekst{
+
+.ucitavanjeTekst {
     font-size: 28px;
 }
+
 .dropbtn {
-  background-color: #43607f;
-  color: white;
-  font-size: 16px;
-  height: 100%;
-  padding: 5px;
-  border: none;
-  cursor: pointer;
-  width: 140px;
-  max-width: 200px;
+    background-color: #43607f;
+    color: white;
+    font-size: 16px;
+    height: 100%;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    max-width: 200px;
 }
 
 .dropdown {
-  position: absolute;
-  height: 100%;
-  right: 0px;
-  top:0px
+    position: absolute;
+    height: 100%;
+    right: 0px;
+    top: 0px
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  width: 100%;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+    background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #2c3e50;
+    background-color: #2c3e50;
 }
-.dropDownDugme{
+
+.dropDownDugme {
     background-color: transparent;
     border: none;
-     color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
 }
-.prijavaSadrzaj{
-  position: fixed;
-width: 28%;
-border-radius: 10px;
-justify-content: center;
-align-items: center;
-    top:25%;
-    left:34%;
+
+.prijavaSadrzaj {
+    position: fixed;
+    width: 28%;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 25%;
+    left: 34%;
     background-color: #ccc;
-z-index: 100;
-padding:0 20px 20px 20px;
+    z-index: 100;
+    padding: 0 20px 20px 20px;
 }
-.inputPrijava{
-    width: 90%;
+
+.inputPrijava {
+    width: 99%;
     height: 30px;
     font-size: 20px;
     margin-top: 15px;
 }
-.inputPrijava:focus{
-     outline: none;
 
-    border:2px solid#43607f;
+.inputPrijava:focus {
+    outline: none;
+
+    border: 2px solid#43607f;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-.prijavaDugmePrijavi{
+
+.prijavaDugmePrijavi {
     width: 34%;
     border: none;
     font-size: 24px;
@@ -886,12 +1016,13 @@ padding:0 20px 20px 20px;
     margin: 0px;
     background-color: rgb(75, 170, 75);
     color: white;
-        cursor: pointer;
+    cursor: pointer;
 
     border-radius: 5px;
 }
-.prijavaDugmeOtkazi{
-      width: 34%;
+
+.prijavaDugmeOtkazi {
+    width: 34%;
     border: none;
     font-size: 24px;
     padding: 3px;
@@ -901,31 +1032,396 @@ padding:0 20px 20px 20px;
     cursor: pointer;
     border-radius: 5px;
 }
-.prijavaDugmePrijavi:hover{
+
+.prijavaDugmePrijavi:hover {
     background-color: rgb(52, 131, 52);
     transition: 0.1s ease-in-out;
 }
-.prijavaDugmeOtkazi:hover{
-        background-color: rgb(87, 21, 21);
-        transition: 0.1s ease-in-out;
+
+.prijavaDugmeOtkazi:hover {
+    background-color: rgb(87, 21, 21);
+    transition: 0.1s ease-in-out;
 
 }
-.zaboravljenaLozinka{
+
+.zaboravljenaLozinka {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
     font-size: 15px
 }
-.promenaLozinkeStavke{
-      position: fixed;
-width: 28%;
-border-radius: 10px;
-justify-content: center;
-align-items: center;
-    top:25%;
-    left:34%;
+
+.promenaLozinkeStavke {
+    position: fixed;
+    width: 28%;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 25%;
+    left: 34%;
     background-color: #ccc;
-z-index: 100;
-padding:0 20px 20px 20px;
-justify-content: center;
+    z-index: 100;
+    padding: 0 20px 20px 20px;
+    justify-content: center;
+}
+
+.korpaSadrzaj {
+    position: fixed;
+    width: 50%;
+    max-height: 480px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    top: 10%;
+    left: 23.3%;
+    background-color: #ccc;
+    z-index: 100;
+    padding: 20px 20px 20px 20px;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.korpaDugmeIsprazni {
+    width: 34%;
+    border: none;
+    font-size: 24px;
+    padding: 3px;
+    margin: 0px;
+    background-color: rgb(63, 72, 124);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.korpaDugmeIsprazni:hover {
+    background-color: rgb(47, 54, 92);
+    transition: 0.1s ease-in-out;
+}
+
+.korpaProizvodaSadezaj {
+    display: flex;
+
+}
+
+.tabelaNasloviRed {
+    background-color: #5b6f83;
+    color: white;
+}
+
+th {
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+td {
+    text-align: center;
+    height: 30px;
+}
+
+.tabelaProizvodiRed {
+    background-color: aliceblue;
+}
+
+.korpaKolicinaDugme {
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.korpaKolicinaInput {
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.korpaProizvodSlika {
+    width: 100%;
+    height: 80px;
+}
+
+table {
+    width: 100%;
+}
+
+@media(max-width:850px) {
+    .formaMeniDugmici {
+        width: 101%;
+    }
+
+    .prijavaSadrzaj {
+        width: 50%;
+        top: 20%;
+        left: 21%;
+    }
+
+    .prijavaDugmePrijavi {
+        width: 45%;
+    }
+
+    .prijavaDugmeOtkazi {
+        width: 45%;
+    }
+
+    .promenaLozinkeStavke {
+        width: 50%;
+        left: 21%;
+    }
+
+    .kontaktPoljeContainer {
+        width: 25%;
+        overflow: -moz-hidden-unscrollable;
+        padding: 10px;
+    }
+
+    .korpaSadrzaj {
+        width: 90%;
+        top: 25%;
+        left: 2.5%;
+    }
+
+    .kontaktPoljeTekst {
+        font-size: 12px;
+
+    }
+
+    .tekstP {
+        font-size: 15px;
+    }
+
+    .Naslov {
+        font-size: 20px;
+    }
+
+    .tekstNaslov {
+        font-size: 20px;
+    }
+
+    .formaDugmeCapcha {
+        font-size: 17px;
+    }
+
+    .formaDugme {
+        font-size: 17px;
+    }
+
+    .formaInput {
+        font-size: 14px;
+    }
+
+    .tekstDiv {
+        width: 94%;
+    }
+
+    .prikazProizvodaDiv {
+        width: 75%;
+
+        top: 10%;
+        left: 9%;
+    }
+
+    .prikazProizvodaSrednjiDeo {
+        display: block;
+    }
+
+    .prikazProizvodaTekst {
+        font-size: 15px;
+
+    }
+
+    .donjiDeoDiv {
+        margin-bottom: 0px;
+        margin-top: 55px;
+    }
+
+    .proizvodiDiv {
+        width: 30%;
+        height: 330px;
+    }
+
+    .proizvodiSlika {
+        width: 100%;
+        height: 180px;
+    }
+
+    .proizvodiNaslov {
+        font-size: 16px;
+    }
+
+    .proizvodiCena {
+        font-size: 16px;
+    }
+
+    .proizvodiCenaBezPopusta {
+        font-size: 16px;
+    }
+
+    .imageSlideDiv {
+        width: 95%;
+        height: 320px;
+    }
+
+    .proizvodiButton {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    .karticaLogo {
+        width: 60px;
+        height: 35px;
+    }
+}
+
+@media(max-width:640px) {
+    .kontaktSadrzaj {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 2fr 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .kontaktPoljeContainer {
+
+        width: 270px;
+        margin: auto;
+    }
+
+    @media(max-width:500px) {
+        .prijavaSadrzaj {
+            width: 85%;
+            top: 20%;
+            left: 2.5%;
+        }
+
+        .kontaktMapa {
+            width: 95%;
+        }
+
+        .kontaktDiv {
+            display: block;
+        }
+
+        .formaDiv {
+            width: 95%;
+        }
+
+        .formaInput {
+            width: 95%;
+        }
+
+        .formaPolje {
+            width: 95%;
+        }
+
+        .formaMeniDugmici {
+            width: 100.8%;
+        }
+
+        .karticaLogo {
+            width: 50px;
+            height: 30px;
+        }
+
+        .kontaktSadrzaj {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .kontaktPoljeContainer {
+            width: 90%;
+        }
+
+        .kontaktPoljeTekst {
+            font-size: 15px;
+        }
+
+        .promenaLozinkeStavke {
+            width: 85%;
+            left: 2.5%;
+        }
+
+        .proizvodiDiv {
+            width: 46%;
+            height: 280px;
+        }
+
+        .proizvodiSlika {
+            width: 100%;
+            height: 150px;
+        }
+
+        .proizvodiNaslov {
+            font-size: 13px;
+        }
+
+        .proizvodiCena {
+            font-size: 13px;
+
+        }
+
+        .proizvodiCenaBezPopusta {
+            font-size: 13px;
+        }
+
+        .proizvodiButton {
+            font-size: 13px;
+            padding: 0px;
+        }
+
+        .prodavnicaMainProizvodi {
+            padding: 10px;
+        }
+    }
+
+    .prikazProizvodaNaslov {
+        font-size: 18px;
+    }
+
+    .proizvodiCenaBezPopusta {
+        text-decoration: line-through rgb(255, 0, 0) 2px;
+    }
+
+    .imageSlideDiv {
+        width: 95%;
+        height: 250px;
+    }
+
+    .imageSlideDugmici {
+        width: 9%;
+    }
+
+    .divImageBroj {
+        top: 85%;
+        font-size: 14px;
+    }
+
+    .pretragaDiv {
+        width: 97%;
+    }
+
+    .pretragaInput {
+        font-size: 16px;
+        width: 75%;
+    }
+
+    .pretragaInput:focus {
+        width: 73.8%;
+        font-size: 16px;
+        height: 16px;
+    }
+}
+
+@media(max-width:360px) {
+    .prijavaSadrzaj {
+        left: 2%;
+    }
+
+    .formaMeniDugmici {
+        width: 101.5%;
+    }
 }

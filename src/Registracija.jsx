@@ -2,17 +2,13 @@ import {  faCheck, faDoorOpen, faFileContract } from "@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import supabase from "./supabaseClient";
 import { useRef, useState } from "react";
-import Alert from "./Alert";
 
-const Registracija=({handleGasi})=>{
+const Registracija=({handleGasi,setUspesno,setPoruka,setOpenAlert})=>{
     const [korisnickoIme,setKorisnickoIme]=useState("");
     const [sifra,setSifra]=useState("");
     const [brojTelefona,setBrojTelefona]=useState("");
     const [eMail,setEmail]=useState("");
     const eMailRef = useRef(null);
-    const [poruka,setPoruka]=useState("");
-    const [openAlert,setOpenAlert]=useState(false);
-    const [uspesno,setUspesno]=useState();
     const [grad,setGrad]=useState("");
     const [adresa,setAdresa]=useState();
 
@@ -69,13 +65,13 @@ const Registracija=({handleGasi})=>{
         setBrojTelefona("");
         setGrad("");
         setAdresa("");
+        handleGasi();
 
     };
     return(
  <div className="popUpContainer">
 <div className="prijavaSadrzaj">
-    {openAlert?    <Alert poruka={poruka} setOpen={setOpenAlert} uspesno={uspesno}/>
-:undefined}
+
     <h1>Registracija <FontAwesomeIcon icon={faFileContract}/></h1>
     <hr/>
     <input className="inputPrijava" placeholder="Unesite korisničko ime" value={korisnickoIme} onChange={(e)=>{setKorisnickoIme(e.target.value)}} />
