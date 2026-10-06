@@ -1,10 +1,10 @@
-import { faCancel, faCheck, faDoorOpen, faEnvelope, faPerson, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faCancel, faCheck, faDoorOpen, faEnvelope, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import KorpaProizvod from "./KorpaProizvod";
 import { useRef, useState } from "react";
 import supabase from "./supabaseClient";
 
-const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikID, setPoruka, setOpenAlert, setUspesno }) => {
+const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikPodaci, setPoruka, setOpenAlert, setUspesno }) => {
     const [imePrezime, setImePrezime] = useState("");
     const [eMail, setEmail] = useState("");
     const eMailRef = useRef(null);
@@ -32,7 +32,26 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
             }
         }
 
-        const stavkeId = Date.now();
+        const { data: poslednjaStavka, error: greska } = await supabase
+            .from("StavkePorudzbine")
+            .select("stavkeId")
+            .order("stavkeId", { ascending: false })
+            .limit(1)
+            .maybeSingle();
+
+        if (greska) {
+            console.error(greska);
+            setPoruka("Došlo je do greške prilikom pronalaženja broja porudžbine !");
+            setUspesno(false);
+            setOpenAlert(true);
+            return;
+        }
+
+        let stavkeId = 1;
+
+        if (poslednjaStavka) {
+            stavkeId = poslednjaStavka.stavkeId + 1;
+        }
 
         const stavke = lista.map((p) => ({
             stavkeId: stavkeId,
@@ -41,10 +60,9 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
             cena: p.cena
         }));
 
-        const { data, error } = await supabase
+        const { error } = await supabase
             .from("StavkePorudzbine")
-            .insert(stavke)
-            .select();
+            .insert(stavke);
 
         if (error) {
             console.error(error);
@@ -61,10 +79,12 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
 
         setLista([]);
         setImePrezime("");
+        setEmail("");
         setBrojTelefona("");
         setGrad("");
         setAdresa("");
     };
+
     return (
         <div className="popUpContainer">
             <div className="korpaSadrzaj">

@@ -30,7 +30,6 @@ const ProdavnicaMain = () => {
   const [pretragaVrednost, setPretragaVrednost] = useState("");
   const [pretraga, setPretraga] = useState("")
   const [korisnickoIme, setKorisnickoIme] = useState("");
-  const [korisnikID, setKorisnikID] = useState();
   const [openPrijava, setOpenPrijava] = useState(false);
   const [openKorpa, setOpenKorpa] = useState(false);
   const [openRegistracija, setOpenRegistracija] = useState(false);
@@ -39,6 +38,14 @@ const ProdavnicaMain = () => {
   const [poruka, setPoruka] = useState("");
   const [uspesno, setUspesno] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
+  const [korisnikPodaci, setKorisnikPodaci] = useState({
+    korisnikId: null,
+    naziv: "",
+    email: "",
+    brojTelefona: "",
+    grad: "",
+    adresa: "",
+  })
   const [izabraniProizvod, setIzabraniProizvd] = useState({
     naslov: "",
     proizvodjac: "",
@@ -159,10 +166,10 @@ const ProdavnicaMain = () => {
     <div >
       {openAlert ? <Alert poruka={poruka} uspesno={uspesno} setOpen={setOpenAlert} /> : undefined}
       {prikazi ? <PrikazProizvoda cena={izabraniProizvod.cena} popust={izabraniProizvod.popust} slike={izabraniProizvod.slike} slikesetPrikaz={setPrikazi} naslov={izabraniProizvod.naslov} proizvodjac={izabraniProizvod.proizvodjac} setPrikaz={setPrikazi} opis={izabraniProizvod.opis} specifikacija={izabraniProizvod.specifikacija} /> : undefined}
-      {openPrijava ? <Prijava setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => setOpenPrijava(false)} setKorisnickoIme={setKorisnickoIme} setPromenaLozinke={setPromenaLozinke} setKorisnikID={setKorisnikID} /> : undefined}
+      {openPrijava ? <Prijava setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => setOpenPrijava(false)} setKorisnickoIme={setKorisnickoIme} setPromenaLozinke={setPromenaLozinke} setKorisnikPodaci={setKorisnikPodaci} /> : undefined}
       {openRegistracija ? <Registracija setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => { setOpenRegistracija(false) }} /> : undefined}
       {promenaLozinkeOpen ? <PromenaLozinke setGasi={setPromenaLozinke} setOpenAlert={setOpenAlert} setPoruka={setPoruka} setUspesno={setUspesno} /> : undefined}
-      {openKorpa ? <Korpa setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleOpenKorpa={handleOpenKorpa} lista={korpaLista} handleIsprazni={() => setKorpaLista([])} setLista={setKorpaLista} korisinickoIme={korisnickoIme} /> : undefined}
+      {openKorpa ? <Korpa setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleOpenKorpa={handleOpenKorpa} lista={korpaLista} handleIsprazni={() => setKorpaLista([])} setLista={setKorpaLista} korisinickoIme={korisnickoIme} korisnikPodaci={korisnikPodaci} /> : undefined}
       <header>
         <GornjiDeo handleSlika={handleHome} korisnickoIme={korisnickoIme} setKorisnickoIme={setKorisnickoIme} setOpenPrijava={setOpenPrijava} setOpenRegistracija={setOpenRegistracija} />
       </header>
