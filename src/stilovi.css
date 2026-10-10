@@ -1194,11 +1194,30 @@ table {
     width: 100%;
 }
 
+@media(max-width:1050px) {
+    .prikazProizvodaSrednjiDeo {
+        display: block;
+    }
+
+    .imageSlideDiv {
+        width: 99%;
+    }
+
+    .prijavaSadrzaj {
+        width: 45%;
+        left: 25.5%;
+    }
+}
+
 @media(max-width:850px) {
 
     .popUpSadrzaj {
         width: 50%;
         left: 20%;
+    }
+
+    .imageSlideDugmici {
+        padding: 0px;
     }
 
     .formaMeniDugmici {
@@ -1348,6 +1367,10 @@ table {
             width: 90%;
         }
 
+        .prikazProizvodaNaslov {
+            font-size: 17px !important;
+        }
+
         .popUpSadrzaj {
             width: 70%;
             left: 10%;
@@ -1377,11 +1400,16 @@ table {
         }
 
         h3 {
-            font-size: 13px;
+            font-size: 12px;
         }
 
         th {
-            font-size: 16px;
+            font-size: 15px;
+            padding: 3px;
+        }
+
+        td {
+            padding: 0px;
         }
 
         .korpaProizvodSlika {
@@ -1415,12 +1443,14 @@ table {
         }
 
         .korpaKolicinaInput {
-            width: 30px;
+            width: 25px;
             font-size: 15px;
         }
 
         .korpaKolicinaDugme {
-            font-size: 20px;
+            font-size: 18px;
+            padding: 1px;
+            margin: 0px;
         }
 
         .korpaSadrzaj {
@@ -1431,6 +1461,7 @@ table {
 
         table {
             padding: 0px;
+            margin: 0px;
         }
 
         .kontaktMapa {
