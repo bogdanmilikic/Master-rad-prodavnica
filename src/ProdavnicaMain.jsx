@@ -184,7 +184,7 @@ const ProdavnicaMain = () => {
         <div className="pretragaDiv">
           <Pretraga vrednost={pretragaVrednost} setVrednost={setPretragaVrednost} handlePretraga={handlePretraga} />
           <button className="pretragaDugme" onClick={() => { setOtvoriSideBar(true) }}><FontAwesomeIcon icon={faFilter} /></button>
-          <button className='pretragaDugme' onClick={handleOpenKorpa}>
+          <button className='pretragaDugme' onClick={handleOpenKorpa} style={{ display: "flex", justifyContent: "center", textAlign: "center", alignContent: "center" }}>
             <FontAwesomeIcon icon={faShoppingCart} />{brojac > 0 ? <font style={{ color: "red" }}>+{brojac}</font> : undefined}
           </button>
         </div>
