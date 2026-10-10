@@ -1,7 +1,7 @@
-import { faArrowUpRightFromSquare, faCheck, faDoorOpen } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare, faCheck, faDoorOpen, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import supabase from "../supabaseClient";
+import supabase from "./supabaseClient";
 
 const Prijava = ({ setPoruka, setUspesno, setOpenAlert, korisnickoIme, setKorisnickoIme, handleGasi, setPromenaLozinke, setKorisnikPodaci }) => {
     const [korisnik, setKorisinik] = useState("");
@@ -21,7 +21,7 @@ const Prijava = ({ setPoruka, setUspesno, setOpenAlert, korisnickoIme, setKorisn
         }
         const { data, error } = await supabase
             .from("Korisnik")
-            .select("korisnikId, naziv")
+            .select("korisnikId, naziv, email, brojTelefona, grad, adresa")
             .eq("naziv", korisnik)
             .eq("sifra", sifra)
             .maybeSingle();
@@ -50,14 +50,15 @@ const Prijava = ({ setPoruka, setUspesno, setOpenAlert, korisnickoIme, setKorisn
         });
         setUspesno(true);
         setOpenAlert(true);
-        setTimeout(() => { "Unesite korisničko ime i lozinku!" }, 1200);
         handleGasi();
     };
     return (
         <div className="popUpContainer">
             <div className="prijavaSadrzaj">
-
-                <h1>Prijava <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></h1>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h1>Prijava <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></h1>
+                    <button className="gasiKorisnikForme" onClick={handleGasi} ><FontAwesomeIcon icon={faX} /></button>
+                </div>
                 <hr />
                 <input className="inputPrijava" placeholder="Unesite vaše korisničko ime" value={korisnik} onChange={(e) => { setKorisinik(e.target.value) }} />
                 <input className="inputPrijava" placeholder="Unesite vašu lozinku" value={sifra} onChange={(e) => { setSifra(e.target.value) }} />

@@ -9,11 +9,11 @@ import SideBar from './SideBar';
 import Pretraga from './Pretraga';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import OdlozeniPrikaz from './config/OdlozenPrikaz';
-import Prijava from './config/Prijava';
+import OdlozeniPrikaz from './OdlozenPrikaz';
+import Prijava from './Prijava';
 import Registracija from './Registracija';
 import DonjiDeo from './DonjiDeo';
-import PromenaLozinke from './config/PromenaLozinke';
+import PromenaLozinke from './PromenaLozinke';
 import Korpa from './Korpa';
 import Alert from './Alert';
 
@@ -38,6 +38,7 @@ const ProdavnicaMain = () => {
   const [poruka, setPoruka] = useState("");
   const [uspesno, setUspesno] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
+  const [brojac, setBrojac] = useState(0);
   const [korisnikPodaci, setKorisnikPodaci] = useState({
     korisnikId: null,
     naziv: "",
@@ -60,7 +61,7 @@ const ProdavnicaMain = () => {
     navigate("/");
   };
   const handleDodaj = (proizvod) => {
-
+    setOpenAlert(false);
     const postoji = korpaLista.find(
       (p) => p.naziv === proizvod.naziv
     );
@@ -80,9 +81,15 @@ const ProdavnicaMain = () => {
       setKorpaLista([...korpaLista, proizvod]);
 
     }
-    setPoruka("Proizvod je uspešno dodat u korpu !");
-    setUspesno(true);
-    setOpenAlert(true);
+    setBrojac(brojac + 1);
+    setPoruka(
+      <>
+        Proizvod je uspešno dodat u korpu +{brojac + 1} <FontAwesomeIcon icon={faShoppingCart} />
+      </>
+    ); setUspesno(true);
+    setTimeout(() => {
+      setOpenAlert(true);
+    }, 200);
 
   };
   const proizvodjaciSupabase = async () => {
@@ -169,7 +176,7 @@ const ProdavnicaMain = () => {
       {openPrijava ? <Prijava setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => setOpenPrijava(false)} setKorisnickoIme={setKorisnickoIme} setPromenaLozinke={setPromenaLozinke} setKorisnikPodaci={setKorisnikPodaci} /> : undefined}
       {openRegistracija ? <Registracija setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => { setOpenRegistracija(false) }} /> : undefined}
       {promenaLozinkeOpen ? <PromenaLozinke setGasi={setPromenaLozinke} setOpenAlert={setOpenAlert} setPoruka={setPoruka} setUspesno={setUspesno} /> : undefined}
-      {openKorpa ? <Korpa setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleOpenKorpa={handleOpenKorpa} lista={korpaLista} handleIsprazni={() => setKorpaLista([])} setLista={setKorpaLista} korisinickoIme={korisnickoIme} korisnikPodaci={korisnikPodaci} /> : undefined}
+      {openKorpa ? <Korpa setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleOpenKorpa={handleOpenKorpa} lista={korpaLista} handleIsprazni={() => { setKorpaLista([]); setBrojac(0); }} setLista={setKorpaLista} korisinickoIme={korisnickoIme} korisnikPodaci={korisnikPodaci} setBrojac={setBrojac} /> : undefined}
       <header>
         <GornjiDeo handleSlika={handleHome} korisnickoIme={korisnickoIme} setKorisnickoIme={setKorisnickoIme} setOpenPrijava={setOpenPrijava} setOpenRegistracija={setOpenRegistracija} />
       </header>
@@ -178,12 +185,12 @@ const ProdavnicaMain = () => {
           <Pretraga vrednost={pretragaVrednost} setVrednost={setPretragaVrednost} handlePretraga={handlePretraga} />
           <button className="pretragaDugme" onClick={() => { setOtvoriSideBar(true) }}><FontAwesomeIcon icon={faFilter} /></button>
           <button className='pretragaDugme' onClick={handleOpenKorpa}>
-            <FontAwesomeIcon icon={faShoppingCart} />
+            <FontAwesomeIcon icon={faShoppingCart} />{brojac > 0 ? <font style={{ color: "red" }}>+{brojac}</font> : undefined}
           </button>
         </div>
         <div className="prodavnicaMainProizvodi">
 
-          {filtriraniProizvodi.length === 0 ? <OdlozeniPrikaz vreme={500} sadrzaj={<p className="nemaProizvoda">Nema proizvoda</p>} /> : undefined}
+          {filtriraniProizvodi.length === 0 ? <OdlozeniPrikaz vreme={700} sadrzaj={<p className="nemaProizvoda">Nema proizvoda</p>} /> : undefined}
           {filtriraniProizvodi.map((p) => {
             const proizvodjac = proizvodjaci.find(
               (pr) =>
@@ -201,7 +208,7 @@ const ProdavnicaMain = () => {
             }
             return (<>
 
-              <Proizvodi slika={p.slika1} naziv={p.naziv} cena={p.cena} popust={p.popust} handleIzabraniProizvod={() => {
+              <Proizvodi slika={p.slika1} naziv={p.naziv} cena={p.cena} popust={p.popust} proizvodId={p.proizvodId} handleIzabraniProizvod={() => {
                 setPrikazi(true); setIzabraniProizvd({
                   naslov: p.naziv,
                   proizvodjac: proizvodjac?.naziv,
@@ -210,8 +217,7 @@ const ProdavnicaMain = () => {
                   specifikacija: p.specifikacija,
                   popust: p.popust,
                   cena: p.cena,
-
-                })
+                });
               }}
                 handleDodaj={handleDodaj} />
             </>)
