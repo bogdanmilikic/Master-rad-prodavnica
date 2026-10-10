@@ -1,4 +1,4 @@
-import { faCancel, faCheck, faDoorOpen, faEnvelope, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faCancel, faCheck, faDoorOpen, faEnvelope, faShoppingCart, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import KorpaProizvod from "./KorpaProizvod";
 import { useRef, useState } from "react";
@@ -156,7 +156,12 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
     return (
         <div className="popUpContainer">
             <div className="korpaSadrzaj">
-                <h1>Korpa <FontAwesomeIcon icon={faShoppingCart} /></h1>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+
+                    <h1>Korpa <FontAwesomeIcon icon={faShoppingCart} /></h1>
+                    <button className="gasiKorisnikForme" onClick={handleOpenKorpa} ><FontAwesomeIcon icon={faX} /></button>
+                </div>
+
                 <hr />
                 {lista.length === 0 ?
                     <p className="nemaProizvoda">Korpa je prazna</p> :
