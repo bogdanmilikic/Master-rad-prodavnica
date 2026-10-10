@@ -935,6 +935,7 @@ a {
     margin: 0 0 0 10px;
     font-size: 20px;
     cursor: pointer;
+    max-width: 100px;
 
 }
 
@@ -1118,6 +1119,8 @@ a {
     padding: 20px 20px 20px 20px;
     justify-content: center;
     overflow-y: auto;
+    overflow-x: hidden;
+
 }
 
 .korpaDugmeIsprazni {
