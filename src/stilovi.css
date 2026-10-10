@@ -935,9 +935,11 @@ a {
     margin: 0 0 0 10px;
     font-size: 20px;
     cursor: pointer;
-    max-width: 100px;
+
 
 }
+
+
 
 .pretragaDugme:hover {
     color: #2c3e50;
@@ -1460,6 +1462,7 @@ table {
             width: 92%;
             top: 20%;
             padding: 10px;
+            left: 1.3%;
         }
 
         table {
