@@ -4,13 +4,18 @@ import KorpaProizvod from "./KorpaProizvod";
 import { useRef, useState } from "react";
 import supabase from "./supabaseClient";
 
-const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikPodaci, setPoruka, setOpenAlert, setUspesno }) => {
+const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikPodaci, setPoruka, setOpenAlert, setUspesno, setBrojac }) => {
     const [imePrezime, setImePrezime] = useState("");
     const [eMail, setEmail] = useState("");
     const eMailRef = useRef(null);
     const [brojTelefona, setBrojTelefona] = useState("");
     const [grad, setGrad] = useState("");
     const [adresa, setAdresa] = useState("");
+    let ukupnaCena = 0;
+
+    lista.forEach((p) => {
+        ukupnaCena += p.cena * p.kolicina;
+    });
     const handlePotvrda = async () => {
 
         if (lista.length === 0) {
@@ -21,10 +26,21 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
         }
 
         if (korisinickoIme === "") {
+
             if (
+                imePrezime.trim() === "" ||
+                brojTelefona.trim() === "" ||
                 eMail.trim() === "" ||
-                eMailRef.current.checkValidity() === false
+                grad.trim() === "" ||
+                adresa.trim() === ""
             ) {
+                setPoruka("Morate popuniti sve podatke za dostavu !");
+                setUspesno(false);
+                setOpenAlert(true);
+                return;
+            }
+
+            if (eMailRef.current.checkValidity() === false) {
                 setPoruka("Uneti validnu e-mail adresu");
                 setUspesno(false);
                 setOpenAlert(true);
@@ -32,47 +48,99 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
             }
         }
 
-        const { data: poslednjaStavka, error: greska } = await supabase
+        let ukupnaCena = 0;
+
+        lista.forEach((p) => {
+            ukupnaCena += p.cena * p.kolicina;
+        });
+
+
+        let podaciPorudzbine;
+
+        if (korisinickoIme === "") {
+            podaciPorudzbine = {
+                korisnikId: null,
+                cena: ukupnaCena,
+                grad: grad,
+                adresa: adresa,
+                brojTelefona: brojTelefona,
+                email: eMail
+            };
+        } else {
+            podaciPorudzbine = {
+                korisnikId: korisnikPodaci.korisnikId,
+                cena: ukupnaCena,
+                grad: korisnikPodaci.grad,
+                adresa: korisnikPodaci.adresa,
+                brojTelefona: korisnikPodaci.brojTelefona,
+                email: korisnikPodaci.email
+            };
+        }
+
+        const { data: porudzbina, error: greskaPorudzbine } = await supabase
+            .from("Porudzbina")
+            .insert([podaciPorudzbine])
+            .select("porudzbinaId")
+            .single();
+
+        if (greskaPorudzbine) {
+            console.error(greskaPorudzbine);
+
+            setPoruka("Došlo je do greške prilikom kreiranja porudžbine !");
+            setUspesno(false);
+            setOpenAlert(true);
+            return;
+        }
+
+        const { data: poslednjaStavka, error: greskaStavkeId } = await supabase
             .from("StavkePorudzbine")
             .select("stavkeId")
             .order("stavkeId", { ascending: false })
             .limit(1)
             .maybeSingle();
 
-        if (greska) {
-            console.error(greska);
-            setPoruka("Došlo je do greške prilikom pronalaženja broja porudžbine !");
+        if (greskaStavkeId) {
+            console.error(greskaStavkeId);
+
+            setPoruka("Došlo je do greške prilikom određivanja ID-a stavke !");
             setUspesno(false);
             setOpenAlert(true);
             return;
         }
 
-        let stavkeId = 1;
+        let sledeciStavkeId = 1;
 
         if (poslednjaStavka) {
-            stavkeId = poslednjaStavka.stavkeId + 1;
+            sledeciStavkeId = poslednjaStavka.stavkeId + 1;
         }
 
-        const stavke = lista.map((p) => ({
-            stavkeId: stavkeId,
+        const stavke = lista.map((p, index) => ({
+            stavkeId: sledeciStavkeId + index,
             proizvodId: p.proizvodId,
             kolicina: p.kolicina,
-            cena: p.cena
+            cena: p.cena,
+            porudzbinaId: porudzbina.porudzbinaId
         }));
 
-        const { error } = await supabase
+        console.log("STAVKE ZA SLANJE:", stavke);
+
+        const { error: greskaStavki } = await supabase
             .from("StavkePorudzbine")
             .insert(stavke);
 
-        if (error) {
-            console.error(error);
+        if (greskaStavki) {
+            console.error(greskaStavki);
 
-            setPoruka("Došlo je do greške prilikom slanja porudžbine !");
+            setPoruka("Porudžbina je kreirana, ali je došlo do greške prilikom dodavanja stavki !");
             setUspesno(false);
             setOpenAlert(true);
             return;
         }
+        console.log("LISTA:", lista);
 
+        lista.forEach((p) => {
+            console.log("PROIZVOD:", p.naziv, "ID:", p.proizvodId);
+        });
         setPoruka("Uspešan prijem porudžbine !");
         setUspesno(true);
         setOpenAlert(true);
@@ -83,8 +151,8 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
         setBrojTelefona("");
         setGrad("");
         setAdresa("");
+        setBrojac(0);
     };
-
     return (
         <div className="popUpContainer">
             <div className="korpaSadrzaj">
@@ -94,7 +162,7 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
                     <p className="nemaProizvoda">Korpa je prazna</p> :
                     <>
                         <KorpaProizvod lista={lista} setLista={setLista} />
-
+                        <h3>Ukupna cena svih izabranih proizvoda je: <u>{ukupnaCena}</u> RSD</h3>
                     </>
                 }
                 {korisinickoIme === "" && lista.length !== 0 ? <>

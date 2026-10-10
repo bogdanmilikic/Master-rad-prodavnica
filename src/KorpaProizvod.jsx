@@ -42,6 +42,9 @@ const KorpaProizvod = ({ lista, setLista }) => {
                                             className="korpaKolicinaInput"
                                             value={p.kolicina}
                                             onChange={(e) => promeniKolicinu(index, e.target.value)}
+                                            type="number"
+                                            max={5}
+                                            min={1}
                                         />
                                         <button
                                             className="korpaKolicinaDugme"

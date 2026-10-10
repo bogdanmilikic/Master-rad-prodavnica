@@ -1,18 +1,18 @@
-import {  faCheck, faDoorOpen, faFileContract } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faDoorOpen, faFileContract, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import supabase from "./supabaseClient";
 import { useRef, useState } from "react";
 
-const Registracija=({handleGasi,setUspesno,setPoruka,setOpenAlert})=>{
-    const [korisnickoIme,setKorisnickoIme]=useState("");
-    const [sifra,setSifra]=useState("");
-    const [brojTelefona,setBrojTelefona]=useState("");
-    const [eMail,setEmail]=useState("");
+const Registracija = ({ handleGasi, setUspesno, setPoruka, setOpenAlert }) => {
+    const [korisnickoIme, setKorisnickoIme] = useState("");
+    const [sifra, setSifra] = useState("");
+    const [brojTelefona, setBrojTelefona] = useState("");
+    const [eMail, setEmail] = useState("");
     const eMailRef = useRef(null);
-    const [grad,setGrad]=useState("");
-    const [adresa,setAdresa]=useState();
+    const [grad, setGrad] = useState("");
+    const [adresa, setAdresa] = useState();
 
- const handleRegistracija = async () => {
+    const handleRegistracija = async () => {
 
         if (
             korisnickoIme === "" ||
@@ -20,8 +20,8 @@ const Registracija=({handleGasi,setUspesno,setPoruka,setOpenAlert})=>{
             brojTelefona === "" ||
             eMail === ""
             ||
-            adresa===""||
-            grad===""
+            adresa === "" ||
+            grad === ""
         ) {
             alert("Popunite sva polja!");
             return;
@@ -40,13 +40,13 @@ const Registracija=({handleGasi,setUspesno,setPoruka,setOpenAlert})=>{
                 }
             ])
             .select();
-    if (eMail.trim() === "" || eMailRef.current.checkValidity() === false) {
-      setPoruka(
-      "Uneti validnu e-mail adresu" );
-      setUspesno(false);
-      setOpenAlert(true);
-      return;
-    }
+        if (eMail.trim() === "" || eMailRef.current.checkValidity() === false) {
+            setPoruka(
+                "Uneti validnu e-mail adresu");
+            setUspesno(false);
+            setOpenAlert(true);
+            return;
+        }
         if (error) {
             console.error(error);
             setPoruka("Greška prilikom ! ~Moguće da je korisničko ime, e-mail ili broj telefona već u upotrebi~");
@@ -68,25 +68,30 @@ const Registracija=({handleGasi,setUspesno,setPoruka,setOpenAlert})=>{
         handleGasi();
 
     };
-    return(
- <div className="popUpContainer">
-<div className="prijavaSadrzaj">
+    return (
+        <div className="popUpContainer">
+            <div className="prijavaSadrzaj">
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
 
-    <h1>Registracija <FontAwesomeIcon icon={faFileContract}/></h1>
-    <hr/>
-    <input className="inputPrijava" placeholder="Unesite korisničko ime" value={korisnickoIme} onChange={(e)=>{setKorisnickoIme(e.target.value)}} />
-    <input className="inputPrijava" placeholder="Unesite lozinku" value={sifra} onChange={(e)=>{setSifra(e.target.value)}}/>
-    <input className="inputPrijava" placeholder="Unesite Vaš broj telefona" value={brojTelefona} onChange={(e)=>{setBrojTelefona(e.target.value)}}/>
-    <input className="inputPrijava" placeholder="Unesite Vašu email adresu" value={eMail} onChange={(e)=>{setEmail(e.target.value)}} type="email" ref={eMailRef}
-        required/>
-            <input className="inputPrijava" placeholder="Unesite grad" value={grad} onChange={(e)=>{setGrad(e.target.value)}} />
-    <input className="inputPrijava" placeholder="Unesite Vašu adresu" value={adresa} onChange={(e)=>{setAdresa(e.target.value)}}/>
+                    <h1>Registracija <FontAwesomeIcon icon={faFileContract} /></h1>
+                    <button className="gasiKorisnikForme" onClick={handleGasi} ><FontAwesomeIcon icon={faX} /></button>
+                </div>
 
-    <menu style={{display:"flex",justifyContent:"center",padding:"0px",gap:"20px"}}>
-        <button className="prijavaDugmePrijavi" onClick={handleRegistracija}> <FontAwesomeIcon icon={faCheck} />  Prijavi se</button>
-    <button className="prijavaDugmeOtkazi" onClick={handleGasi}>Izlaz <FontAwesomeIcon icon={faDoorOpen}/></button>
-    </menu>
-</div>
+
+                <hr />
+                <input className="inputPrijava" placeholder="Unesite korisničko ime" value={korisnickoIme} onChange={(e) => { setKorisnickoIme(e.target.value) }} />
+                <input className="inputPrijava" placeholder="Unesite lozinku" value={sifra} onChange={(e) => { setSifra(e.target.value) }} />
+                <input className="inputPrijava" placeholder="Unesite Vaš broj telefona" value={brojTelefona} onChange={(e) => { setBrojTelefona(e.target.value) }} />
+                <input className="inputPrijava" placeholder="Unesite Vašu email adresu" value={eMail} onChange={(e) => { setEmail(e.target.value) }} type="email" ref={eMailRef}
+                    required />
+                <input className="inputPrijava" placeholder="Unesite grad" value={grad} onChange={(e) => { setGrad(e.target.value) }} />
+                <input className="inputPrijava" placeholder="Unesite Vašu adresu" value={adresa} onChange={(e) => { setAdresa(e.target.value) }} />
+
+                <menu style={{ display: "flex", justifyContent: "center", padding: "0px", gap: "20px" }}>
+                    <button className="prijavaDugmePrijavi" onClick={handleRegistracija}> <FontAwesomeIcon icon={faCheck} />  Prijavi se</button>
+                    <button className="prijavaDugmeOtkazi" onClick={handleGasi}>Izlaz <FontAwesomeIcon icon={faDoorOpen} /></button>
+                </menu>
+            </div>
         </div>
 
     )
