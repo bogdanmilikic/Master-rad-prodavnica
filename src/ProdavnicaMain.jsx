@@ -60,38 +60,50 @@ const ProdavnicaMain = () => {
   const handleHome = () => {
     navigate("/");
   };
+
   const handleDodaj = (proizvod) => {
     setOpenAlert(false);
+
+    const noviProizvod = {
+      ...proizvod,
+      popust: proizvod.popust ?? null
+    };
+
     const postoji = korpaLista.find(
-      (p) => p.naziv === proizvod.naziv
+      (p) => p.proizvodId === noviProizvod.proizvodId
     );
 
     if (postoji) {
-
       setKorpaLista(
         korpaLista.map((p) =>
-          p.naziv === proizvod.naziv
-            ? { ...p, kolicina: p.kolicina + proizvod.kolicina }
+          p.proizvodId === noviProizvod.proizvodId
+            ? {
+              ...p,
+              kolicina: p.kolicina + noviProizvod.kolicina
+            }
             : p
         )
       );
-
     } else {
-
-      setKorpaLista([...korpaLista, proizvod]);
-
+      setKorpaLista([...korpaLista, noviProizvod]);
     }
+
     setBrojac(brojac + 1);
+
     setPoruka(
       <>
-        Proizvod je uspešno dodat u korpu +{brojac + 1} <FontAwesomeIcon icon={faShoppingCart} />
+        Proizvod je uspešno dodat u korpu +{brojac + 1}{" "}
+        <FontAwesomeIcon icon={faShoppingCart} />
       </>
-    ); setUspesno(true);
+    );
+
+    setUspesno(true);
+
     setTimeout(() => {
       setOpenAlert(true);
     }, 200);
-
   };
+
   const proizvodjaciSupabase = async () => {
     const { data, error } = await supabase
       .from("Proizvodjac")

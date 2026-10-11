@@ -21,13 +21,16 @@ const Proizvodi = ({ naziv, slika, cena, handleIzabraniProizvod, popust, handleD
             <menu className="proizvodiMeni">
                 <button
                     className="proizvodiButton"
+
                     onClick={() => handleDodaj({
                         proizvodId: proizvodId,
                         naziv: naziv,
                         slika: slika,
                         cena: cena,
+                        popust: popust,
                         kolicina: Number(kolicina)
                     })}
+
                 >
                     <FontAwesomeIcon icon={faShoppingCart} />
                     Dodaj u korpu

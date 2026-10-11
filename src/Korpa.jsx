@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import supabase from "./supabaseClient";
 
 const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikPodaci, setPoruka, setOpenAlert, setUspesno, setBrojac }) => {
+    console.log("LISTA U KORPI:", lista);
     const [imePrezime, setImePrezime] = useState("");
     const [eMail, setEmail] = useState("");
     const eMailRef = useRef(null);
@@ -14,7 +15,11 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
     let ukupnaCena = 0;
 
     lista.forEach((p) => {
-        ukupnaCena += p.cena * p.kolicina;
+        const cenaProizvoda = p.popust != null && p.popust !== ""
+            ? p.popust
+            : p.cena;
+
+        ukupnaCena += Number(cenaProizvoda) * p.kolicina;
     });
     const handlePotvrda = async () => {
 
@@ -51,7 +56,11 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
         let ukupnaCena = 0;
 
         lista.forEach((p) => {
-            ukupnaCena += p.cena * p.kolicina;
+            const cenaProizvoda = p.popust != null && p.popust !== ""
+                ? p.popust
+                : p.cena;
+
+            ukupnaCena += Number(cenaProizvoda) * p.kolicina;
         });
 
 
@@ -118,7 +127,11 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
             stavkeId: sledeciStavkeId + index,
             proizvodId: p.proizvodId,
             kolicina: p.kolicina,
-            cena: p.cena,
+            cena: Number(
+                p.popust != null && p.popust !== ""
+                    ? p.popust
+                    : p.cena
+            ),
             porudzbinaId: porudzbina.porudzbinaId
         }));
 

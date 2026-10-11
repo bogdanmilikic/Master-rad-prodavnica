@@ -11,6 +11,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import ProdavnicaMain from './ProdavnicaMain';
 import { useEffect, useState } from 'react';
 import GornjiDeoSlideBar from './GornjiDeoSlideBar';
+import Alert from './Alert';
 
 const GlavnaStrana = () => {
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ const GlavnaStrana = () => {
   const [aktivnoDugme, setAktivnoDugme] = useState(0);
   const [scroll, setScroll] = useState(true);
   const [gornjiDeoSideBarOpen, setGornjiDeoSideBarOpen] = useState(false);
+  const [poruka, setPoruka] = useState("");
+  const [uspesno, setUspesno] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
 
   const handleProdavnica = () => {
     navigate("/prodavnica");
@@ -83,6 +87,7 @@ const GlavnaStrana = () => {
 
   return (
     <div onScroll={(e) => setTrenutniScroll(e.currentTarget.scrollTop)}>
+      {openAlert ? <Alert poruka={poruka} setOpen={setOpenAlert} uspesno={uspesno} /> : undefined}
       <header>
         <GornjiDeoSlideBar otvoren={gornjiDeoSideBarOpen} handleSideBar={() => setGornjiDeoSideBarOpen(false)} setScroll={setScroll} setTrenutnaPozicija={setTrenutniScroll} oNamaScroll={oNamaScroll} kontaktScroll={kontaktScroll} setAktivno={setAktivnoDugme} aktivno={aktivnoDugme} prviId={'oNama'} drugiId={'kontakt'} handleProdavnica={handleProdavnica} />
         <GornjiDeo setGornjiDeoSideBarOpen={setGornjiDeoSideBarOpen} aktivno={aktivnoDugme} setAktivno={setAktivnoDugme} handleProdavnica={handleProdavnica} vidjliviDugmici={true} handleSlika={() => navigate("/")} kontaktScroll={kontaktScroll} aktivnoDugme={aktivnoDugme} prviId={'oNama'} drugiId={'kontakt'} oNamaScroll={oNamaScroll} setScroll={setScroll} setTrenutnaPozicija={setTrenutniScroll} />
@@ -98,7 +103,7 @@ Pored prodaje, pružamo i kompletne servisne usluge. Naš stručni tim obavlja r
 Naš cilj je da svakom kupcu pružimo kvalitetnu uslugu, pouzdane proizvode i profesionalnu podršku. Verujemo da je svaki bicikl početak nove avanture, zbog čega se trudimo da pronađemo idealno rešenje za vaše potrebe i budžet.
 
 Posetite nas i uverite se zašto nam veliki broj zadovoljnih kupaca ukazuje poverenje. Bilo da kupujete svoj prvi bicikl, tražite kvalitetan polovni model ili vam je potreban brz i pouzdan servis, tu smo da vam pomognemo." /></div>
-        <div id='kontakt' className='kontaktDiv'>  <Kontakt ikonicaMapa={<FontAwesomeIcon icon={faMapLocationDot} />} naslov="Kontakt" ikonicaNaslov={<FontAwesomeIcon icon={faAddressCard} />} tekst="Kontaktirajte nas putem e-maila ili telefona za više informacija o našim proizvodima i uslugama." /></div>
+        <div id='kontakt' className='kontaktDiv'>  <Kontakt setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} ikonicaMapa={<FontAwesomeIcon icon={faMapLocationDot} />} naslov="Kontakt" ikonicaNaslov={<FontAwesomeIcon icon={faAddressCard} />} tekst="Kontaktirajte nas putem e-maila ili telefona za više informacija o našim proizvodima i uslugama." /></div>
       </main>
       <footer>
         <DonjiDeo />

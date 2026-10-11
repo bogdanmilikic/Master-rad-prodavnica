@@ -4,19 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import PopUp from "./PopUp";
 import emailjs from "@emailjs/browser";
-import Alert from "./Alert";
 
 
-const Forma = () => {
+const Forma = ({ setPoruka, setUspesno, setOpenAlert }) => {
   const [posalji, setPosalji] = useState(true);
   const [openPopUp, setOpenPopUp] = useState(false);
-  const [poruka, setPoruka] = useState("");
+
   const [ime, setIme] = useState("");
   const [eMail, setEMail] = useState("");
   const [pitanje, setPitanje] = useState("");
   const eMailRef = useRef(null);
-  const [obavestenje, setObavestenje] = useState(false);
-  const [uspesno, setUspesno] = useState(false);
 
   const [prviBroj, setPrviBroj] = useState(Math.floor(Math.random() * 100));
   const [drugiBroj, setDrugiBroj] = useState(Math.floor(Math.random() * 100));
@@ -33,14 +30,14 @@ const Forma = () => {
         "'Ime i prezime' polje mora biti popunjeno da bi se poslalo Vaše pitanje"
       );
       setUspesno(false);
-      setObavestenje(true);
+      setOpenAlert(true);
       return;
     }
     if (eMail.trim() === "" || eMailRef.current.checkValidity() === false) {
       setPoruka(
         "Uneti validnu e-mail adresu");
       setUspesno(false);
-      setObavestenje(true);
+      setOpenAlert(true);
       return;
     }
 
@@ -48,7 +45,7 @@ const Forma = () => {
       setPoruka("'Pitanje' polje mora biti popunjeno da bi se poslalo Vaše pitanje"
       );
       setUspesno(false);
-      setObavestenje(true);
+      setOpenAlert(true);
       return;
     }
     const templateParams = {
@@ -71,7 +68,7 @@ const Forma = () => {
           setPoruka("Pitanje je uspešno poslato!"
           );
           setUspesno(true);
-          setObavestenje(true);
+          setOpenAlert(true);
           setIme("");
           setEMail("");
           setPitanje("");
@@ -82,20 +79,14 @@ const Forma = () => {
           setPoruka("Došlo je do greške pri slanju pitanja"
           );
           setUspesno(false);
-          setObavestenje(true);
+          setOpenAlert(true);
         }
       );
   };
   return (
     <>
-      {obavestenje ? (
-        <Alert
-          setOpen={setObavestenje}
-          uspesno={uspesno}
-          poruka={poruka}
-        />
-      ) : undefined}
-      {openPopUp ? <PopUp prviBroj={prviBroj} drugiBroj={drugiBroj} setDrugiBroj={setDrugiBroj} setPrviBroj={setPrviBroj} handleClose={handleClose} setPosalji={setPosalji} /> : null}
+
+      {openPopUp ? <PopUp prviBroj={prviBroj} drugiBroj={drugiBroj} setDrugiBroj={setDrugiBroj} setPrviBroj={setPrviBroj} handleClose={handleClose} setPosalji={setPosalji} setOpenAlert={setOpenAlert} setPoruka={setPoruka} setUspesno={setUspesno} /> : null}
       <div className="formaDiv">
 
         <input className="formaInput" placeholder="Unesite vaše ime i prezime" value={ime} onChange={(e) => { setIme(e.target.value) }} required />

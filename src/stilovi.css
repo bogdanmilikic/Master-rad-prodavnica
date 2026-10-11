@@ -1212,6 +1212,11 @@ table {
         width: 45%;
         left: 25.5%;
     }
+
+    .proizvodiDiv {
+        width: 30%;
+        height: 400px;
+    }
 }
 
 @media(max-width:850px) {
@@ -1555,6 +1560,8 @@ table {
 
     .prikazProizvodaNaslov {
         font-size: 18px;
+        width: 90%;
+
     }
 
     .proizvodiCenaBezPopusta {

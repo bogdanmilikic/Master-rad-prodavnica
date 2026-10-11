@@ -5,7 +5,7 @@ import { faClock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons/faPhone";
 import { faStreetView } from "@fortawesome/free-solid-svg-icons/faStreetView";
 
-const Kontakt = ({ naslov, ikonicaNaslov, ikonicaMapa }) => {
+const Kontakt = ({ naslov, ikonicaNaslov, ikonicaMapa, setPoruka, setUspesno, setOpenAlert }) => {
     return (
         <div className="tekstDiv">
             <div style={{ width: "100%" }}>
@@ -29,7 +29,7 @@ const Kontakt = ({ naslov, ikonicaNaslov, ikonicaMapa }) => {
 
                     <div >
                         <h1 className="tekstNaslov">{ikonicaMapa}{"   "}Postavite pitanje</h1>
-                        <Forma />
+                        <Forma setPoruka={setPoruka} setUspesno={setUspesno} setOpenAlert={setOpenAlert} />
                     </div></div></div>
         </div>
 
