@@ -87,15 +87,14 @@ const ProdavnicaMain = () => {
     } else {
       setKorpaLista([...korpaLista, noviProizvod]);
     }
-
     setBrojac(brojac + 1);
-
     setPoruka(
       <>
-        Proizvod je uspešno dodat u korpu +{brojac + 1}{" "}
+        Proizvod je uspešno dodat u korpu +
         <FontAwesomeIcon icon={faShoppingCart} />
       </>
     );
+
 
     setUspesno(true);
 
@@ -175,11 +174,11 @@ const ProdavnicaMain = () => {
       }
       return 0;
     });
+
   useEffect(() => {
     proizvodiSupabase();
     proizvodjaciSupabase();
   }, []);
-
 
   return (
     <div >
@@ -188,7 +187,7 @@ const ProdavnicaMain = () => {
       {openPrijava ? <Prijava setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => setOpenPrijava(false)} setKorisnickoIme={setKorisnickoIme} setPromenaLozinke={setPromenaLozinke} setKorisnikPodaci={setKorisnikPodaci} /> : undefined}
       {openRegistracija ? <Registracija setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleGasi={() => { setOpenRegistracija(false) }} /> : undefined}
       {promenaLozinkeOpen ? <PromenaLozinke setGasi={setPromenaLozinke} setOpenAlert={setOpenAlert} setPoruka={setPoruka} setUspesno={setUspesno} /> : undefined}
-      {openKorpa ? <Korpa setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleOpenKorpa={handleOpenKorpa} lista={korpaLista} handleIsprazni={() => { setKorpaLista([]); setBrojac(0); }} setLista={setKorpaLista} korisinickoIme={korisnickoIme} korisnikPodaci={korisnikPodaci} setBrojac={setBrojac} /> : undefined}
+      {openKorpa ? <Korpa setPoruka={setPoruka} setOpenAlert={setOpenAlert} setUspesno={setUspesno} handleOpenKorpa={handleOpenKorpa} lista={korpaLista} handleIsprazni={() => { setKorpaLista([]); }} setLista={setKorpaLista} korisinickoIme={korisnickoIme} korisnikPodaci={korisnikPodaci} /> : undefined}
       <header>
         <GornjiDeo handleSlika={handleHome} korisnickoIme={korisnickoIme} setKorisnickoIme={setKorisnickoIme} setOpenPrijava={setOpenPrijava} setOpenRegistracija={setOpenRegistracija} />
       </header>
@@ -197,7 +196,7 @@ const ProdavnicaMain = () => {
           <Pretraga vrednost={pretragaVrednost} setVrednost={setPretragaVrednost} handlePretraga={handlePretraga} />
           <button className="pretragaDugme" onClick={() => { setOtvoriSideBar(true) }}><FontAwesomeIcon icon={faFilter} /></button>
           <button className='pretragaDugme' onClick={handleOpenKorpa} style={{ display: "flex", justifyContent: "center", textAlign: "center", alignContent: "center" }}>
-            <FontAwesomeIcon icon={faShoppingCart} />{brojac > 0 ? <font style={{ color: "red" }}>+{brojac}</font> : undefined}
+            <FontAwesomeIcon icon={faShoppingCart} />
           </button>
         </div>
         <div className="prodavnicaMainProizvodi">

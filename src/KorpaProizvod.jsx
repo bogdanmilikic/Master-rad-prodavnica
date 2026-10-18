@@ -1,4 +1,7 @@
-const KorpaProizvod = ({ lista, setLista }) => {
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const KorpaProizvod = ({ lista, setLista, korisnickoIme }) => {
 
     const promeniKolicinu = (indexZaPromenu, novaKolicina) => {
         if (novaKolicina < 1) return;
@@ -8,6 +11,10 @@ const KorpaProizvod = ({ lista, setLista }) => {
             }
             return p;
         });
+        setLista(novaLista);
+    };
+    const handleIzbaci = (indexZaIzbacivanje) => {
+        const novaLista = lista.filter((p, index) => index !== indexZaIzbacivanje);
         setLista(novaLista);
     };
     return (
@@ -20,6 +27,7 @@ const KorpaProizvod = ({ lista, setLista }) => {
                         <th>Cena</th>
                         <th>Količina</th>
                         <th>Ukupna Cena</th>
+                        <th>Izbaci</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +65,7 @@ const KorpaProizvod = ({ lista, setLista }) => {
                                 <td>
                                     <h3>{p.popust == null ? p.cena * p.kolicina : p.popust * p.kolicina} RSD</h3>
                                 </td>
+                                <td><button onClick={() => { handleIzbaci(index) }} className="korpaIzbaci"><FontAwesomeIcon icon={faTrash} /></button></td>
                             </tr>
                         )
                     })}

@@ -1,10 +1,10 @@
-import { faCancel, faCheck, faDoorOpen, faEnvelope, faShoppingCart, faX } from "@fortawesome/free-solid-svg-icons";
+import { faCancel, faCheck, faDoorOpen, faEnvelope, faShoppingCart, faTruckFast, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import KorpaProizvod from "./KorpaProizvod";
 import { useRef, useState } from "react";
 import supabase from "./supabaseClient";
 
-const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikPodaci, setPoruka, setOpenAlert, setUspesno, setBrojac }) => {
+const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIme, korisnikPodaci, setPoruka, setOpenAlert, setUspesno }) => {
     console.log("LISTA U KORPI:", lista);
     const [imePrezime, setImePrezime] = useState("");
     const [eMail, setEmail] = useState("");
@@ -21,6 +21,7 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
 
         ukupnaCena += Number(cenaProizvoda) * p.kolicina;
     });
+
     const handlePotvrda = async () => {
 
         if (lista.length === 0) {
@@ -63,7 +64,6 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
             ukupnaCena += Number(cenaProizvoda) * p.kolicina;
         });
 
-
         let podaciPorudzbine;
 
         if (korisinickoIme === "") {
@@ -78,7 +78,7 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
         } else {
             podaciPorudzbine = {
                 korisnikId: korisnikPodaci.korisnikId,
-                cena: ukupnaCena,
+                cena: ukupnaCena * 0.95,
                 grad: korisnikPodaci.grad,
                 adresa: korisnikPodaci.adresa,
                 brojTelefona: korisnikPodaci.brojTelefona,
@@ -164,7 +164,6 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
         setBrojTelefona("");
         setGrad("");
         setAdresa("");
-        setBrojac(0);
     };
     return (
         <div className="popUpContainer">
@@ -180,7 +179,8 @@ const Korpa = ({ lista, handleOpenKorpa, handleIsprazni, setLista, korisinickoIm
                     <p className="nemaProizvoda">Korpa je prazna</p> :
                     <>
                         <KorpaProizvod lista={lista} setLista={setLista} />
-                        <h3>Ukupna cena svih izabranih proizvoda je: <u>{ukupnaCena}</u> RSD</h3>
+                        <h3>Ukupna cena {korisinickoIme !== "" ? <>,uz lojalti popust od 5%,</> : undefined}svih izabranih proizvoda je: <u>{korisinickoIme !== "" ? ukupnaCena * 0.95 : ukupnaCena}</u> RSD</h3>
+                        {ukupnaCena > 5000 ? <h3>Ostvareni su uslovi za besplatnu dostavu <FontAwesomeIcon icon={faTruckFast} /></h3> : undefined}
                     </>
                 }
                 {korisinickoIme === "" && lista.length !== 0 ? <>
